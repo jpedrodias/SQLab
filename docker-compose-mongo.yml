@@ -1,5 +1,5 @@
 # docker-compose com servidor MongoDB 
-name: FundamentosSQL
+name: SQLab
 
 services:
   # Servidor 3: MongoDB
