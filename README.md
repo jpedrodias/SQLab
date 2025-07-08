@@ -1,5 +1,6 @@
 # Preparação para correr SQL em Docker, Jupyter ou VM
 
+
 - 🐳 [Docker](#-preparação-do-sistema-para-correr-em-docker)
 - 📓 [Jupyter Notebook](#-preparação-do-sistema-para-correr-em-jupyter-notebook)
 - 🖥️ [Máquina virtual](#-preparação-do-sistema-para-correr-em-máquina-virtual)
