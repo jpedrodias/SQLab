@@ -138,7 +138,7 @@ docker compose up -d
 >    docker compose -f docker-compose-ALL.yml up
 >    ```
 > 
-> ![Footprint de todos os servidores](img/footprint.png.png)
+> ![Footprint de todos os servidores](img/footprint.png)
 >    
 
 
