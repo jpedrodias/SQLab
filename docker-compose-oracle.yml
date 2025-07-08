@@ -1,4 +1,4 @@
-# docker-compose-oracle com servidor Oracle Database Free Edition 
+# docker-compose-oracle com servidor Oracle Database Free Edition
 name: SQLab
 
 # Versão não oficial
