@@ -1,4 +1,4 @@
-# docker-compose com servidor mysql 
+# docker-compose com servidor mysql
 name: SQLab
 
 services:
