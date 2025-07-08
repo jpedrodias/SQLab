@@ -78,7 +78,7 @@ winget install -e --id Docker.DockerDesktop
 
 ### 1. Clonar este repositório
 ```bash
-git clone https://github.com/jpedrodias/FundamentosSQL.git
+git clone https://github.com/jpedrodias/sql-lab.git
 cd FundamentosSQL
 ```
 > Ou, em alternativa, copie apenas o ficheiro `docker-compose.yml` e o ficheiro `.env`.
@@ -139,6 +139,14 @@ docker compose up -d
 >    ```bash
 >    docker compose -f docker-compose-ALL.yml up
 >    ```
+
+#### Extra - Menu para inicializar os serviços (Windows):
+- Em alternativa, será possível inicializar qualquer um dos serviços anteriores correndo o ficheiro batch:
+>    ```bash
+>    run_in_docker.bat
+>    ```
+
+
 
 
 
