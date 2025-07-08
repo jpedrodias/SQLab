@@ -143,7 +143,9 @@ docker compose up -d
 >    ```bash
 >    run_in_docker.bat
 >    ```
-
+> 
+> ![Menu run_in_docker.bat](img/print_run_in_docker.png)
+>    
 
 
 
