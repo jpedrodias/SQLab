@@ -1,4 +1,4 @@
-# docker-compose com ferramenta web phpmyadmin 
+# docker-compose com ferramenta web phpmyadmin
 name: SQLab
 
 services:
