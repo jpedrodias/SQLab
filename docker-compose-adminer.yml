@@ -1,5 +1,5 @@
 # docker-compose com ferramenta web adminer
-name: FundamentosSQL
+name: SQLab
 
 services:
   # Web Interface for Database: vários
