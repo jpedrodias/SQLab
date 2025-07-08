@@ -1,5 +1,5 @@
 # docker-compose-oracle com ferramenta web interface Adminer_oci8
-name: FundamentosSQL
+name: SQLab
 
 services:
   adminer_oci8:
