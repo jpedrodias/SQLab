@@ -1,5 +1,5 @@
 # docker-compose com ferramenta web mongo-express
-name: FundamentosSQL
+name: SQLab
 
 services:
   # Interface web para MongoDB: mongo-express
