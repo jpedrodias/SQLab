@@ -1,4 +1,4 @@
-# Preparação do sistema para correr em Docker, Jupyter ou VM
+# Preparação para correr SQL em Docker, Jupyter ou VM
 
 - 🐳 [Docker](#-preparação-do-sistema-para-correr-em-docker)
 - 📓 [Jupyter Notebook](#-preparação-do-sistema-para-correr-em-jupyter-notebook)
@@ -78,8 +78,8 @@ winget install -e --id Docker.DockerDesktop
 
 ### 1. Clonar este repositório
 ```bash
-git clone https://github.com/jpedrodias/sql-lab.git
-cd FundamentosSQL
+git clone https://github.com/jpedrodias/SQLab.git
+cd SQLab
 ```
 > Ou, em alternativa, copie apenas o ficheiro `docker-compose.yml` e o ficheiro `.env`.
 
@@ -87,14 +87,12 @@ cd FundamentosSQL
 
 ### 2. Iniciar o docker container:
 ```bash
-cd system_prep
 docker compose up
 ```
 > Para manter os serviços em funcionamento é necessário manter o terminal aberto e para parar estes serviços basta pressionar `Ctrl+C`
 
 Para iniciar os serviços em background é a mesma instrução mas, com a flag ` -d` (detached mode):
 ```bash
-cd system_prep
 docker compose up -d
 ```
 > E neste caso, para parar estes serviços que ficaram a correr em background fazer `docker compose down` ou parar através do Docker Desktop.
@@ -256,8 +254,8 @@ O `JupySQL` permite executar comandos SQL e criar gráficos de grandes conjuntos
 
 ## b) Correr Jupyter localmente em windows:
 ```bash
-python -m venv C:\TEMP\venvs\FundamentosSQL
-C:\TEMP\venvs\FundamentosSQL\Scripts\Activate.ps1
+python -m venv C:\TEMP\venvs\SQLab
+C:\TEMP\venvs\SQLab\Scripts\Activate.ps1
 pip install -r requirements.txt --upgrade --no-cache-dir
 pip cache purge
 ```
@@ -265,8 +263,8 @@ pip cache purge
 
 ## c) Correr Jupyter localmente em macOS/Linux:
 ```bash
-python3 -m venv /tmp/FundamentosSQL
-source /tmp/FundamentosSQL/bin/activate
+python3 -m venv /tmp/SQLab
+source /tmp/SQLab/bin/activate
 pip install -r requirements.txt --upgrade --no-cache-dir
 pip cache purge
 ```
