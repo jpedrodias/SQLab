@@ -1,5 +1,5 @@
 # docker-compose com ferramenta pgAdmin 
-name: FundamentosSQL
+name: SQLab
 
 services:
   # Web Interface for Database: PostgreSQL
@@ -26,6 +26,6 @@ volumes:
 
 networks:
   default:
-    name: FundamentosSQL-network
+    name: SQLab-network
     #external: true # uncomment this on production
     driver: bridge

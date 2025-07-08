@@ -1,5 +1,5 @@
 # docker-compose-oracle com servidor Oracle Database Free Edition 
-name: FundamentosSQL
+name: SQLab
 
 # Versão não oficial
 # https://hub.docker.com/r/gvenzl/oracle-free # Oracle Database Free Edition
@@ -41,6 +41,6 @@ volumes:
 
 networks:
   default:
-    name: FundamentosSQL-network
+    name: SQLab-network
     #external: true # uncomment this on production
     driver: bridge
