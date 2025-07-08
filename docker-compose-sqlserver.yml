@@ -1,4 +1,4 @@
-# docker-compose com servidor Microsoft SQL Server 
+# docker-compose com servidor Microsoft SQL Server
 name: SQLab
 
 services:
@@ -27,7 +27,6 @@ services:
 
 volumes:
   mssqlserver_data:      # Servidor 1: MS SQL Server
-
 
 networks:
   default:
