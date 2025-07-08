@@ -16,6 +16,6 @@ services:
 
 networks:
   default:
-    name: FundamentosSQL-network
+    name: SQLab-network
     #external: true # uncomment this on production
     driver: bridge
