@@ -1,0 +1,29 @@
+
+# docker-compose com ferramenta web mongo-express
+name: FundamentosSQL
+
+services:
+  # Interface web para MongoDB: mongo-express
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo_express
+    restart: unless-stopped
+    ports:
+      - "8084:8081"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_CONFIG_BASICAUTH_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_CONFIG_BASICAUTH_PASSWORD}
+      TZ: ${TZ}
+    networks:
+      - default
+
+networks:
+  default:
+    name: FundamentosSQL-network
+    #external: true # uncomment this on production
+    driver: bridge

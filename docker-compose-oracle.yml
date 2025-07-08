@@ -1,0 +1,46 @@
+# docker-compose-oracle com servidor Oracle Database Free Edition 
+name: FundamentosSQL
+
+# Versão não oficial
+# https://hub.docker.com/r/gvenzl/oracle-free # Oracle Database Free Edition
+
+services:
+  # --- Oracle Database Free (XE/23c) -----------------------------
+  oracle:
+    image: gvenzl/oracle-free:latest
+    container_name: oracle_server
+    ports:
+      # SQL*Net / Listener
+      - 1521:1521
+      # Enterprise Manager Express / APEX
+      - 5500:5500
+    restart: unless-stopped
+    environment:
+      TZ: Europe/Lisbon
+      # Service name: FREEPDB1
+      # Palavra‑passe do utilizador SYSTEM (alterar à sua escolha)
+      ORACLE_PASSWORD: oracle_password
+      ORACLE_DATABASE: mydatabase
+      APP_USER: oracle_user
+      APP_USER_PASSWORD: oracle_password
+    healthcheck:
+        test: ["CMD", "healthcheck.sh"]
+        interval: 10s
+        timeout: 5s
+        retries: 10
+        start_period: 5s
+        start_interval: 5s
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+      #- my-init.sql:/container-entrypoint-initdb.d/my-init.sql:ro
+    networks:
+      - default
+
+volumes:
+  oracle_data:
+
+networks:
+  default:
+    name: FundamentosSQL-network
+    #external: true # uncomment this on production
+    driver: bridge

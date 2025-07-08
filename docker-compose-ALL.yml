@@ -1,0 +1,235 @@
+# docker-compose com 5 servidores: mysql, postgres, mongodb, oracle e ms sql server e ferramentas web interface: adminer, phpmyadmin, pgAdmin e mongo-express
+name: FundamentosSQL
+
+services:
+  # Servidor 1: MySQL Configuration
+  mysql:
+    image: mysql:latest
+    container_name: mysql_server
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: ${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mysql_data:/var/lib/mysql
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Servidor 2: PostgreSQL Configuration
+  postgres:
+    image: postgres:latest
+    container_name: postgres_server
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      TZ: ${TZ}
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Servidor 3: MongoDB Configuration
+  mongo:
+    image: mongo:latest
+    container_name: mongodb_server
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      TZ: ${TZ}
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  # Servidor 4: Oracle Database Free (XE/23c)
+  oracle:
+    image: gvenzl/oracle-free:latest
+    container_name: oracle_server
+    ports:
+      # SQL*Net / Listener
+      - 1521:1521
+      # Enterprise Manager Express / APEX
+      - 5500:5500
+    restart: unless-stopped
+    environment:
+      TZ: Europe/Lisbon
+      # Service name: FREEPDB1
+      # Palavra‑passe do utilizador SYSTEM (alterar à sua escolha)
+      ORACLE_PASSWORD: oracle_password
+      ORACLE_DATABASE: mydatabase
+      APP_USER: oracle_user
+      APP_USER_PASSWORD: oracle_password
+    healthcheck:
+        test: ["CMD", "healthcheck.sh"]
+        interval: 10s
+        timeout: 5s
+        retries: 10
+        start_period: 5s
+        start_interval: 5s
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+      #- my-init.sql:/container-entrypoint-initdb.d/my-init.sql:ro
+    networks:
+      - default
+
+  # Servidor 5: MS SQL Server
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_server
+    restart: unless-stopped
+    ports:
+      - 1433:1433
+    environment:
+      SA_PASSWORD: ${SQLSERVER_SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Express # Edição gratuita
+      TZ: ${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mssqlserver_data:/var/opt/mssql
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${SQLSERVER_SA_PASSWORD} -Q 'SELECT 1'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+
+  # Web Interface for Database: vários
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    restart: unless-stopped
+    ports:
+      - 8081:8080
+    depends_on:
+      - postgres
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - default
+
+  # Web Interface for Database: MySQL
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 8082:80
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+      PMA_PORT: 3306
+      TZ: ${TZ}
+    depends_on:
+      - mysql
+    networks:
+      - default
+
+  # Web Interface for Database: postgres
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: unless-stopped
+    ports:
+      - 8083:80
+    depends_on:
+      - postgres
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - pgadmin_data:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      TZ: ${TZ}
+    user: "5050:5050"  # Especifica o UID e GID do usuário pgadmin
+    networks:
+      - default
+
+  # Web Interface for Database: MongoDB
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo_express
+    restart: unless-stopped
+    ports:
+      - "8084:8081"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mongodb_data:/data/db
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_CONFIG_BASICAUTH_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_CONFIG_BASICAUTH_PASSWORD}
+      TZ: ${TZ}
+    depends_on:
+      - mongo
+    networks:
+      - default
+
+  adminer_oci8:
+    image: soivangoi/nginx-php-adminer-oci8:latest # Adminer with Oracle support
+    container_name: adminer-oracle
+    restart: unless-stopped
+    ports:
+      - 8085:80
+    depends_on:
+      - oracle
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - default
+
+
+volumes:
+  mysql_data:      # Servidor 1: MySQL
+  postgres_data:   # Servidor 2: PostgreSQL
+  mongodb_data:    # Servidor 3: MongoDB
+  mongodb_config:  # MongoDB Configurations
+  pgadmin_data:    # Web Interfaces for Databases: pgAdmin
+  oracle_data:     # Servidor 4: Oracle Database Free (XE/23c)
+  mssqlserver_data:  # Servidor 5: MS SQL Server
+
+
+networks:
+  default:
+    name: FundamentosSQL-network
+    #external: true # uncomment this on production
+    driver: bridge
+

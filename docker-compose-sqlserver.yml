@@ -1,0 +1,36 @@
+# docker-compose com servidor Microsoft SQL Server 
+name: FundamentosSQL
+
+services:
+  # Servidor 1: Microsoft SQL Server Configuration
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_server
+    restart: unless-stopped
+    ports:
+      - 1433:1433
+    environment:
+      SA_PASSWORD: ${SQLSERVER_SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Express # Edição gratuita
+      TZ: ${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mssqlserver_data:/var/opt/mssql
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${SQLSERVER_SA_PASSWORD} -Q 'SELECT 1'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  mssqlserver_data:      # Servidor 1: MS SQL Server
+
+
+networks:
+  default:
+    name: FundamentosSQL-network
+    #external: true # uncomment this on production
+    driver: bridge

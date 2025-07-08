@@ -1,0 +1,38 @@
+# docker-compose com servidor MongoDB 
+name: FundamentosSQL
+
+services:
+  # Servidor 3: MongoDB
+  mongo:
+    image: mongo:latest
+    container_name: mongodb_server
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      TZ: ${TZ}
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+volumes:
+  mongodb_data:    # Servidor 3: MongoDB
+  mongodb_config:  # MongoDB Configurations
+
+
+networks:
+  default:
+    name: FundamentosSQL-network
+    #external: true # uncomment this on production
+    driver: bridge
