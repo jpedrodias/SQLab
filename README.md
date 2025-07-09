@@ -143,10 +143,26 @@ docker compose up -d
 >    
 
 
-#### Extra - Menu para inicializar os serviços (Windows):
+#### Extra - Menu para inicializar os serviços:
+
+**Windows:**
 - Em alternativa, será possível inicializar qualquer um dos serviços anteriores correndo o ficheiro batch:
->    ```bash
+>    ```batch
 >    run_in_docker.bat
+>    ```
+
+**Linux/macOS:**
+- Para Linux e macOS, utilize o script Bash equivalente:
+>    ```bash
+>    chmod +x run_in_docker.sh
+>    ./run_in_docker.sh
+>    ```
+> Ou, se preferir executar diretamente um serviço específico:
+>    ```bash
+>    ./run_in_docker.sh mysql      # Para MySQL
+>    ./run_in_docker.sh postgres   # Para PostgreSQL
+>    ./run_in_docker.sh mongo      # Para MongoDB
+>    ./run_in_docker.sh ALL        # Para todos os serviços
 >    ```
 > 
 > ![Menu run_in_docker.bat](img/print_run_in_docker.png)
