@@ -19,7 +19,6 @@ Nos ficheiros de *compose* incluídos neste repositório existem diferentes cen�
 
 | Ficheiro                         | Servidores                      | Ferramentas Web                  |
 |----------------------------------|---------------------------------|----------------------------------|
-| **docker-compose.yml**           | MySQL                           | Adminer, phpMyAdmin              |
 | **docker-compose-mysql.yml**     | MySQL                           | Adminer, phpMyAdmin              |
 | **docker-compose-postgres.yml**  | PostgreSQL                      | Adminer, pgAdmin                 |
 | **docker-compose-mongo.yml**     | MongoDB                         | Mongo Express                    |
@@ -157,7 +156,9 @@ docker compose up -d
 >    chmod +x run_in_docker.sh
 >    ./run_in_docker.sh
 >    ```
-> Ou, se preferir executar diretamente um serviço específico:
+
+
+- Ou, se preferir executar diretamente um serviço específico:
 >    ```bash
 >    ./run_in_docker.sh mysql      # Para MySQL
 >    ./run_in_docker.sh postgres   # Para PostgreSQL
