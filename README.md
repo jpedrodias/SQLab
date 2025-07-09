@@ -45,6 +45,7 @@ Nos ficheiros de *compose* incluídos neste repositório existem diferentes cen�
 - 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
 - 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
 - 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
+- ☁️ **[CloudBeaver](https://cloudbeaver.io/)** — Interface web universal do DBeaver, compatível com todos os SGBDs
 
 
 
@@ -174,6 +175,13 @@ docker compose up -d
 > ![Footprint de todos os servidores](img/footprint.png)
 >    
 
+#### Extra - CloudBeaver (Interface Universal):
+- Para correr apenas o CloudBeaver (compatível com todos os SGBDs), usar o comando:
+>    ```bash
+>    docker compose -f docker-compose-cloudbeaver.yml up
+>    ```
+> O CloudBeaver é a versão web do popular DBeaver e suporta conexões a MySQL, PostgreSQL, MongoDB, Oracle, SQL Server e muitos outros SGBDs numa única interface.
+
 
 #### Extra - Menu para inicializar os serviços:
 
@@ -257,6 +265,7 @@ base de dados: tempdb (ou deixar vazio)
 |[http://localhost:8083](http://localhost:8083)|pgAdmin      |❌  |✅      |❌    |❌   |❌ | user: `admin@admin.com`, pass: `admin` |
 |[http://localhost:8084](http://localhost:8084)|Mongo Express|❌  |❌      |❌    |❌   |✅ | user: `admin`, pass: `admin` |
 |[http://localhost:8085](http://localhost:8085)|Adminer_ci8  |❌  |❌      |✅    |❌   |❌ | none |
+|[http://localhost:8086](http://localhost:8086)|CloudBeaver  |✅  |✅      |✅    |✅   |✅ | initial setup required |
 
 
 

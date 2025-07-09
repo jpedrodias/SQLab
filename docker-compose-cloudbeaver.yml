@@ -1,0 +1,27 @@
+# docker-compose com ferramenta web CloudBeaver
+name: SQLab
+
+services:
+  # Web Interface for Database: Universal (CloudBeaver)
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    container_name: cloudbeaver
+    restart: unless-stopped
+    ports:
+      - 8086:8978
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - cloudbeaver_data:/opt/cloudbeaver/workspace
+    environment:
+      TZ: ${TZ}
+    networks:
+      - default
+
+volumes:
+  cloudbeaver_data:    # Web Interface: CloudBeaver workspace
+
+networks:
+  default:
+    name: SQLab-network
+    #external: true # uncomment this on production
+    driver: bridge

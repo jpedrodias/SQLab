@@ -25,6 +25,7 @@ echo ║ [ B ] - phpMyAdmin                             ║
 echo ║ [ C ] - pgAdmin                                ║
 echo ║ [ D ] - Mongo Express                          ║
 echo ║ [ E ] - Adminer_ci8                            ║
+echo ║ [ F ] - CloudBeaver                            ║
 echo ╚════════════════════════════════════════════════╝
 set /p op=Opção: 
 
@@ -40,6 +41,7 @@ if /I "%op%"=="B" %0 phpmyadmin
 if /I "%op%"=="C" %0 pgadmin
 if /I "%op%"=="D" %0 mongo_express
 if /I "%op%"=="E" %0 adminer_oci8
+if /I "%op%"=="F" %0 cloudbeaver
 
 if /I "%op%"=="X" goto STOP
 if "%op%"=="!" goto PURGE

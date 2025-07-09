@@ -22,6 +22,7 @@ show_menu() {
     echo "║ [ C ] - pgAdmin                                ║"
     echo "║ [ D ] - Mongo Express                          ║"
     echo "║ [ E ] - Adminer_ci8                            ║"
+    echo "║ [ F ] - CloudBeaver                            ║"
     echo "╚════════════════════════════════════════════════╝"
 }
 
@@ -121,6 +122,7 @@ main() {
             [Cc]) run_service "pgadmin" ;;
             [Dd]) run_service "mongo_express" ;;
             [Ee]) run_service "adminer_oci8" ;;
+            [Ff]) run_service "cloudbeaver" ;;
             [Xx]) stop_all ;;
             "!") purge_all ;;
             0) 
