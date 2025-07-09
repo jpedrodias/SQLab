@@ -51,6 +51,21 @@ goto MENU
 
 
 :PURGE
+echo ⚠️  ATENÇÃO: Esta operação irá eliminar TODOS os dados Docker!
+echo Isto inclui:
+echo   • Todos os containers
+echo   • Todas as imagens
+echo   • Todos os volumes (DADOS SERÃO PERDIDOS!)
+echo   • Todas as redes
+echo.
+set /p confirm=Tem a certeza? (y/N): 
+if /I not "%confirm%"=="y" (
+    echo Operação cancelada.
+    pause
+    goto MENU
+)
+
+echo Realizando limpeza completa...
 for %%f in (docker-compose-*.yml) do (
     echo Parando %%f...
     docker compose -f %%f down --remove-orphans
@@ -61,7 +76,7 @@ docker rmi $(docker images -q) -f
 docker volume rm $(docker volume ls -q)
 docker network prune -f
 docker system prune -a --volumes -f
-echo Limpeza completa!
+echo Limpeza completa realizada!
 pause
 goto MENU
 
