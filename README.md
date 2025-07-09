@@ -64,6 +64,8 @@ Certifique-se de que tem **Git**, **WSL** e **Docker Desktop** instalados:
 - 🐙 [Docker Desktop](https://www.docker.com/get-started/)
 
 
+
+**Windows:**
 Como alternativa, em windows, é possível fazer esta instalação usando o **winget**:
 
 ```bash
@@ -72,6 +74,37 @@ wsl --update
 winget update
 winget install -e --id Git.Git
 winget install -e --id Docker.DockerDesktop
+```
+
+**macOS:**
+Como alternativa, em macOS, é possível fazer esta instalação usando o **Homebrew**:
+
+```bash
+# Instalar Homebrew (se ainda não estiver instalado)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Instalar Git e Docker Desktop
+brew install git
+brew install --cask docker
+```
+
+**Linux (Ubuntu/Debian):**
+Para distribuições baseadas em Debian, use o **apt**:
+
+```bash
+# Atualizar repositórios
+sudo apt update
+
+# Instalar Git
+sudo apt install git
+
+# Instalar Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER
+
+# Reiniciar sessão ou executar:
+newgrp docker
 ```
 
 
