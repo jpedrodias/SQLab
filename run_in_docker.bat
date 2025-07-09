@@ -91,7 +91,12 @@ pause
 goto MENU
 
 :RUN
-docker compose -f docker-compose-%1.yml up -d
+if exist "docker-compose-%1.yml" (
+    echo Iniciando serviço: %1...
+    docker compose -f docker-compose-%1.yml up -d
+) else (
+    echo Erro: Ficheiro docker-compose-%1.yml não encontrado!
+)
 pause
 goto MENU
 
