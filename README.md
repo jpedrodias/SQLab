@@ -258,14 +258,18 @@ base de dados: tempdb (ou deixar vazio)
 
 
 ### 4. Clientes Web (sem instalações adicionais)
-|LINK                                          |Ferramenta   |MySQL|Postgres|Oracle|MS SQL|MongoDB |Acesso |
-|----------------------------------------------|-------------|-----|--------|------|------|--------|-------|
-|[http://localhost:8081](http://localhost:8081)|Adminer      |✅  |✅      |❌    |✅   |❌ | none |
-|[http://localhost:8082](http://localhost:8082)|phpMyAdmin   |✅  |❌      |❌    |❌   |❌ | none |
-|[http://localhost:8083](http://localhost:8083)|pgAdmin      |❌  |✅      |❌    |❌   |❌ | user: `admin@admin.com`, pass: `admin` |
-|[http://localhost:8084](http://localhost:8084)|Mongo Express|❌  |❌      |❌    |❌   |✅ | user: `admin`, pass: `admin` |
-|[http://localhost:8085](http://localhost:8085)|Adminer_ci8  |❌  |❌      |✅    |❌   |❌ | none |
-|[http://localhost:8086](http://localhost:8086)|CloudBeaver  |✅  |✅      |✅    |✅   |✅ | initial setup required |
+|Ferramenta   |Porta |MySQL|Postgres|Oracle|MS SQL|MongoDB |Acesso |
+|-------------|------|-----|--------|------|------|--------|-------|
+|Adminer      |8081  |✅  |✅      |❌    |✅   |❌ | none |
+|CloudBeaver  |8082  |✅  |✅      |✅    |✅   |✅ | initial setup required |
+|pgAdmin      |8083  |❌  |✅      |❌    |❌   |❌ | user: `admin@admin.com`, pass: `admin` |
+|Mongo Express|8084  |❌  |❌      |❌    |❌   |✅ | user: `admin`, pass: `admin` |
+|Adminer_ci8  |8085  |❌  |❌      |✅    |❌   |❌ | none |
+|phpMyAdmin   |8086  |✅  |❌      |❌    |❌   |❌ | none |
+
+
+
+
 
 
 

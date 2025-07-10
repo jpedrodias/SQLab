@@ -8,7 +8,7 @@ services:
     container_name: phpmyadmin
     restart: always
     ports:
-      - 8082:80
+      - 8086:80
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
