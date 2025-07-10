@@ -271,9 +271,6 @@ base de dados: tempdb (ou deixar vazio)
 
 
 
-
-
-
 ### 5. 🧹 Limpeza completa do *cache* do Docker
 
 Embora o Docker não tenha uma pegada tão grande quanto uma máquina virtual tradicional, continua a ser uma forma de virtualização que pode consumir espaço considerável em disco. Para além das imagens descarregadas, o Docker cria volumes, redes e outros artefactos que se podem acumular.
