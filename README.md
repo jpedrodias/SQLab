@@ -382,9 +382,9 @@ pip cache purge
 
 ## b) ferramentas web:
 - [Adminer](https://www.adminer.org/en/)
+- [CloudBeaver](https://cloudbeaver.io/)
 - [phpMyAdmin](https://www.phpmyadmin.net/)
 - [pgAdmin](https://www.pgadmin.org/download/pgadmin-4-container/)
 - [Mongo Express](https://github.com/mongo-express/mongo-express)
-
 
 ---
