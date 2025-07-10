@@ -18,11 +18,11 @@ show_menu() {
     echo "║ [ 0 ] - Sair           ╔═══════════════════════╣"
     echo "╠════════════════════════╣ F E R R A M E N T A S ║"
     echo "║ [ A ] - Adminer        ╚═══════════════════════╣"
-    echo "║ [ B ] - phpMyAdmin                             ║"
+    echo "║ [ B ] - CloudBeaver                            ║"
     echo "║ [ C ] - pgAdmin                                ║"
     echo "║ [ D ] - Mongo Express                          ║"
     echo "║ [ E ] - Adminer_ci8                            ║"
-    echo "║ [ F ] - CloudBeaver                            ║"
+    echo "║ [ F ] - phpMyAdmin                             ║"
     echo "╚════════════════════════════════════════════════╝"
 }
 
@@ -118,11 +118,11 @@ main() {
             5) run_service "sqlserver" ;;
             "*") run_service "ALL" ;;
             [Aa]) run_service "adminer" ;;
-            [Bb]) run_service "phpmyadmin" ;;
+            [Bb]) run_service "cloudbeaver" ;;
             [Cc]) run_service "pgadmin" ;;
             [Dd]) run_service "mongo_express" ;;
             [Ee]) run_service "adminer_oci8" ;;
-            [Ff]) run_service "cloudbeaver" ;;
+            [Ff]) run_service "phpmyadmin" ;;
             [Xx]) stop_all ;;
             "!") purge_all ;;
             0) 
