@@ -261,7 +261,7 @@ base de dados: tempdb (ou deixar vazio)
 |Ferramenta   |Porta |MySQL|Postgres|Oracle|MS SQL|MongoDB |Acesso |
 |-------------|------|-----|--------|------|------|--------|-------|
 |Adminer      |[8081](http://localhost:8081)  |✅  |✅      |❌    |✅   |❌ | none |
-|CloudBeaver  |[8082](http://localhost:8082)  |✅  |✅      |✅    |✅   |✅ | initial setup required |
+|CloudBeaver  |[8082](http://localhost:8082)  |✅  |✅      |✅    |✅   |❌ | initial setup required |
 |pgAdmin      |[8083](http://localhost:8083)  |❌  |✅      |❌    |❌   |❌ | user: `admin@admin.com`, pass: `admin` |
 |Mongo Express|[8084](http://localhost:8084)  |❌  |❌      |❌    |❌   |✅ | user: `admin`, pass: `admin` |
 |Adminer_ci8  |[8085](http://localhost:8085)  |❌  |❌      |✅    |❌   |❌ | none |
