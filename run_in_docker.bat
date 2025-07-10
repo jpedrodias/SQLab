@@ -8,24 +8,25 @@ if not "%1"=="" goto RUN
 :MENU
 set op=""
 cls
-echo Escolha o serviço Docker:  ╔═════════════════════╗
-echo ╔══════════════════════════╣ S E R V I D O R E S ║
-echo ║ [ 1 ] - MySQL            ╚═════════════════════╣
-echo ║ [ 2 ] - PostgreSQL                             ║
+echo Escolha o serviço Docker a iniciar:
+echo ╔════════════════════════╦═══════════════════════╗
+echo ║ [ 1 ] - MySQL          ║ S E R V I D O R E S   ║
+echo ║ [ 2 ] - PostgreSQL     ╚═══════════════════════╣
 echo ║ [ 3 ] - MongoDB                                ║
 echo ║ [ 4 ] - OracleDB CE                            ║
 echo ║ [ 5 ] - Microsoft SQL Server Express           ║
-echo ║ [ * ] - Iniciar todos os servidores            ║
-echo ║ [ x ] - STOP Parar todos os servidores         ║
-echo ║ [ ! ] - PURGE Apagar tudo (vol., imagens, nw)  ║
-echo ║ [ 0 ] - Sair           ╔═══════════════════════╣
-echo ╠════════════════════════╣ F E R R A M E N T A S ║
-echo ║ [ A ] - Adminer        ╚═══════════════════════╣
-echo ║ [ B ] - CloudBeaver                            ║
+echo ╠════════════════════════╦═══════════════════════╣
+echo ║ [ A ] - Adminer        ║ F E R R A M E N T A S ║
+echo ║ [ B ] - CloudBeaver    ╚═══════════════════════╣
 echo ║ [ C ] - pgAdmin                                ║
 echo ║ [ D ] - Mongo Express                          ║
 echo ║ [ E ] - Adminer_ci8                            ║
 echo ║ [ F ] - phpMyAdmin                             ║
+echo ╠════════════════════════════════════════════════╣
+echo ║ [ * ] - ALL Iniciar todos os servidores        ║
+echo ║ [ x ] - STOP Parar todos os servidores         ║
+echo ║ [ ! ] - PURGE Apagar tudo (vol., imagens, nw)  ║
+echo ║ [ 0 ] - EXIT Sair                              ║
 echo ╚════════════════════════════════════════════════╝
 set /p op=Opção: 
 
