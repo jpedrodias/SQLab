@@ -260,12 +260,12 @@ base de dados: tempdb (ou deixar vazio)
 ### 4. Clientes Web (sem instalações adicionais)
 |Ferramenta   |Porta |MySQL|Postgres|Oracle|MS SQL|MongoDB |Acesso |
 |-------------|------|-----|--------|------|------|--------|-------|
-|Adminer      |8081  |✅  |✅      |❌    |✅   |❌ | none |
-|CloudBeaver  |8082  |✅  |✅      |✅    |✅   |✅ | initial setup required |
-|pgAdmin      |8083  |❌  |✅      |❌    |❌   |❌ | user: `admin@admin.com`, pass: `admin` |
-|Mongo Express|8084  |❌  |❌      |❌    |❌   |✅ | user: `admin`, pass: `admin` |
-|Adminer_ci8  |8085  |❌  |❌      |✅    |❌   |❌ | none |
-|phpMyAdmin   |8086  |✅  |❌      |❌    |❌   |❌ | none |
+|Adminer      |[http://localhost:8081](http://localhost:8081)  |✅  |✅      |❌    |✅   |❌ | none |
+|CloudBeaver  |[http://localhost:8081](http://localhost:8082)  |✅  |✅      |✅    |✅   |✅ | initial setup required |
+|pgAdmin      |[http://localhost:8081](http://localhost:8083)  |❌  |✅      |❌    |❌   |❌ | user: `admin@admin.com`, pass: `admin` |
+|Mongo Express|[http://localhost:8081](http://localhost:8084)  |❌  |❌      |❌    |❌   |✅ | user: `admin`, pass: `admin` |
+|Adminer_ci8  |[http://localhost:8081](http://localhost:8085)  |❌  |❌      |✅    |❌   |❌ | none |
+|phpMyAdmin   |[http://localhost:8081](http://localhost:8086)  |✅  |❌      |❌    |❌   |❌ | none |
 
 
 
