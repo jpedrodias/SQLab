@@ -45,7 +45,7 @@ Nos ficheiros de *compose* incluídos neste repositório existem diferentes cen�
 - 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
 - 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
 - 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
-- ☁️ **[CloudBeaver](https://cloudbeaver.io/)** — Interface web universal do DBeaver, compatível com todos os SGBDs
+- ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Interface web universal do DBeaver, compatível com todos os SGBDs
 
 
 
