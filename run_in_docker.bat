@@ -21,11 +21,11 @@ echo ║ [ ! ] - PURGE Apagar tudo (vol., imagens, nw)  ║
 echo ║ [ 0 ] - Sair           ╔═══════════════════════╣
 echo ╠════════════════════════╣ F E R R A M E N T A S ║
 echo ║ [ A ] - Adminer        ╚═══════════════════════╣
-echo ║ [ B ] - phpMyAdmin                             ║
+echo ║ [ B ] - CloudBeaver                            ║
 echo ║ [ C ] - pgAdmin                                ║
 echo ║ [ D ] - Mongo Express                          ║
 echo ║ [ E ] - Adminer_ci8                            ║
-echo ║ [ F ] - CloudBeaver                            ║
+echo ║ [ F ] - phpMyAdmin                             ║
 echo ╚════════════════════════════════════════════════╝
 set /p op=Opção: 
 
@@ -37,11 +37,11 @@ if "%op%"=="5" %0 sqlserver
 if "%op%"=="*" %0 ALL
 
 if /I "%op%"=="A" %0 adminer
-if /I "%op%"=="B" %0 phpmyadmin
+if /I "%op%"=="B" %0 cloudbeaver
 if /I "%op%"=="C" %0 pgadmin
 if /I "%op%"=="D" %0 mongo_express
 if /I "%op%"=="E" %0 adminer_oci8
-if /I "%op%"=="F" %0 cloudbeaver
+if /I "%op%"=="F" %0 phpmyadmin
 
 if /I "%op%"=="X" goto STOP
 if "%op%"=="!" goto PURGE
