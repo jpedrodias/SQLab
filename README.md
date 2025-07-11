@@ -215,7 +215,7 @@ docker compose up -d
 
 ### 3. Dados de acesso:
 Para aceder a um servidor de base de dados, utilizado uma das ferramentas aqui incluida, o servidor **não** pode ser `localhost` e terá de ser o servidor indicado. 
-Por exemplo, para lidação usando o DBeaver, o campo `Server host` será `localhost`.
+Contudo, para ligação usando outras ferramentas, por exemplo, o DBeaver, o campo `Server host` será `localhost`.
 
 
 3.1. ao servidor 1 - `MySQL`
@@ -230,7 +230,7 @@ PS: No DBeaver, pode ser necessário fazer uma configuração adicional. Em `Dri
 
 3.1. ao servidor 2 - `PostgreSQL`
 ```yml
-Servidor: postgres
+Servidor: postgres ou localhost
 user: postgres_user
 password: postgres_password
 base de dados: mydatabase
@@ -238,7 +238,7 @@ base de dados: mydatabase
 
 3.3. ao servidor 3 - `MongoDB`
 ```yml
-Servidor: mongo
+Servidor: mongo ou localhost
 user: mongo_user
 password: mongo_password
 base de dados: mydatabase
@@ -246,7 +246,7 @@ base de dados: mydatabase
 
 3.4. ao servidor 4 - `Oracle Database Express Edition`
 ```yml
-Servidor: oracle
+Servidor: oracle ou localhost
 user: system
 password: oracle_password
 base de dados: mydatabase
@@ -254,7 +254,7 @@ base de dados: mydatabase
 
 3.5. ao servidor 5 - `Microsoft SQL Server - Express`
 ```yml
-Servidor: sqlserver
+Servidor: sqlserver ou localhost
 user: sa
 password: mssql_Sup3rStrong3Password!
 base de dados: tempdb (ou deixar vazio)
