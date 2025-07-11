@@ -178,12 +178,12 @@ docker compose up -d
 >    ```bash
 >    docker compose -f docker-compose-ALL.yml up
 >    ```
-> 
-> ![Footprint de todos os servidores](img/footprint.png)
->    
+
 
 
 #### Extra - Menu para inicializar os serviços:
+![Footprint de todos os servidores](img/footprint.png)  
+
 
 **Windows:**
 - Em alternativa, será possível inicializar qualquer um dos serviços anteriores correndo o ficheiro `batch`:
