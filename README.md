@@ -15,15 +15,15 @@
 
 # 🐳 Preparação do sistema para correr em Docker
 
-Nos ficheiros de *compose* incluídos neste repositório existem diferentes cenários de base de dados e respetivas ferramentas de administração:
+Nos ficheiros de *docker-compose* incluídos neste repositório existem diferentes cenários de base de dados e as respetivas ferramentas de administração que permitem a ligação a essas bases de dados:
 
-| Ficheiro                         | Servidores                      | Ferramentas Web                  |
+| Ficheiro                         | Servidores                      | Ferramentas Web de Ligação       |
 |----------------------------------|---------------------------------|----------------------------------|
-| **docker-compose-mysql.yml**     | MySQL                           | Adminer, phpMyAdmin              |
-| **docker-compose-postgres.yml**  | PostgreSQL                      | Adminer, pgAdmin                 |
+| **docker-compose-mysql.yml**     | MySQL                           | Adminer, phpMyAdmin, CloudBeaver |
+| **docker-compose-postgres.yml**  | PostgreSQL                      | Adminer, pgAdmin, CloudBeaver    |
 | **docker-compose-mongo.yml**     | MongoDB                         | Mongo Express                    |
-| **docker-compose-oracle.yml**    | OracleDB CE (Community Edition) | Adminer_ci8 (versão não oficial) |
-| **docker-compose-sqlserver.yml** | Microsoft SQL Server (Express)  | Adminer                          |
+| **docker-compose-oracle.yml**    | OracleDB CE (Community Edition) | Adminer_ci8, , CloudBeaver       |
+| **docker-compose-sqlserver.yml** | Microsoft SQL Server (Express)  | Adminer, CloudBeaver             |
 | **docker-compose-ALL.yml**       | Todas as anteriores             | Todas as anteriores              |
 
 
