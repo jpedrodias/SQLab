@@ -42,11 +42,10 @@ Nos ficheiros de *docker-compose* incluídos neste repositório existem diferent
 ## Ferramentas de administração via Web
 
 - 🛠️ **[Adminer](https://www.adminer.org/)** — Interface única, leve, compatível com vários SGBDs
-- 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
+- ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Interface web universal do DBeaver, compatível com todos os SGBDs
 - 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
 - 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
-- ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Interface web universal do DBeaver, compatível com todos os SGBDs
-
+- 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
 
 
 ---
@@ -115,7 +114,7 @@ newgrp docker
 git clone https://github.com/jpedrodias/SQLab.git
 cd SQLab
 ```
-> Ou, em alternativa, copie apenas o ficheiro `docker-compose.yml` e o ficheiro `.env`.
+> Ou, em alternativa, copie apenas os ficheiros `docker-compose-*.yml` pretendidos e o ficheiro `.env` de configuração das variáveis de ambiente.
 
 
 
@@ -129,7 +128,7 @@ Para iniciar os serviços em background é a mesma instrução mas, com a flag `
 ```bash
 docker compose up -d
 ```
-> E neste caso, para parar estes serviços que ficaram a correr em background fazer `docker compose down` ou parar através do Docker Desktop.
+> E neste caso, não é necessário manter o terminal aberto e para parar estes serviços que ficaram a correr em background fazer `docker compose down`. Ou parar estes serviços através do Docker Desktop.
 
 
 
@@ -166,15 +165,6 @@ docker compose up -d
 >    ```
 
 
-#### Extra - Todos os servidores:
-- Para correr a versão com todos os servidores, usar o comando:
->    ```bash
->    docker compose -f docker-compose-ALL.yml up
->    ```
-> 
-> ![Footprint de todos os servidores](img/footprint.png)
->    
-
 #### Extra - CloudBeaver (Interface Universal):
 - Para correr apenas o CloudBeaver (compatível com todos os SGBDs), usar o comando:
 >    ```bash
@@ -183,22 +173,34 @@ docker compose up -d
 > O CloudBeaver é a versão web do popular DBeaver e suporta conexões a MySQL, PostgreSQL, MongoDB, Oracle, SQL Server e muitos outros SGBDs numa única interface.
 
 
+#### Extra - Todos os servidores:
+- Para correr a versão com todos os servidores (e ferramentas), usar o comando:
+>    ```bash
+>    docker compose -f docker-compose-ALL.yml up
+>    ```
+> 
+> ![Footprint de todos os servidores](img/footprint.png)
+>    
+
+
 #### Extra - Menu para inicializar os serviços:
 
 **Windows:**
-- Em alternativa, será possível inicializar qualquer um dos serviços anteriores correndo o ficheiro batch:
+- Em alternativa, será possível inicializar qualquer um dos serviços anteriores correndo o ficheiro `batch`:
 >    ```batch
->    run_in_docker.bat
+>    .\run_in_docker.bat
 >    ```
 
 **Linux/macOS:**
-- Para Linux e macOS, utilize o script Bash equivalente:
+- Para Linux e macOS, utilize o script `bash` equivalente:
 >    ```bash
 >    chmod +x run_in_docker.sh
 >    ./run_in_docker.sh
 >    ```
+(`chmod` adicina as permissões para esse ficheiro poder ser executado)
 
 
+**Extra:**
 - Ou, se preferir executar diretamente um serviço específico:
 >    ```bash
 >    ./run_in_docker.sh mysql      # Para MySQL
@@ -208,20 +210,23 @@ docker compose up -d
 >    ```
 > 
 > ![Menu run_in_docker.bat](img/print_run_in_docker.png)
->    
-
-
+> 
 
 
 ### 3. Dados de acesso:
+Para aceder a um servidor de base de dados, utilizado uma das ferramentas aqui incluida, o servidor **não** pode ser `localhost` e terá de ser o servidor indicado. 
+Por exemplo, para lidação usando o DBeaver, o campo `Server host` será `localhost`.
+
 
 3.1. ao servidor 1 - `MySQL`
 ```yml
-Servidor: mysql
+Servidor: mysql ou localhost
 user: mysql_user
 password: mysql_password
 base de dados: mydatabase
 ```
+PS: No DBeaver, pode ser necessário fazer uma configuração adicional. Em `Driver properties` alterar `allowPublickeyRetrieval` de `false` para **`TRUE`**.
+
 
 3.1. ao servidor 2 - `PostgreSQL`
 ```yml
@@ -258,6 +263,8 @@ base de dados: tempdb (ou deixar vazio)
 
 
 ### 4. Clientes Web (sem instalações adicionais)
+Estas ferramentas incluidas permitem o acesso ao servidor de bases de dados, também sem qualquer instalação adicional. Contudo, nem todas as ferramentas permitem o acesso a todos as bases de dados. 
+
 |Ferramenta   |Porta |MySQL|Postgres|Oracle|MS SQL|MongoDB |Acesso |
 |-------------|------|-----|--------|------|------|--------|-------|
 |Adminer      |[8081](http://localhost:8081)  |✅  |✅      |❌    |✅   |❌ | none |
@@ -275,7 +282,10 @@ base de dados: tempdb (ou deixar vazio)
 
 Embora o Docker não tenha uma pegada tão grande quanto uma máquina virtual tradicional, continua a ser uma forma de virtualização que pode consumir espaço considerável em disco. Para além das imagens descarregadas, o Docker cria volumes, redes e outros artefactos que se podem acumular.
 
-Nem sempre o Docker Desktop exibe todos os recursos ocupados. Para efetuar uma limpeza completa do *cache* utilize:
+Nem sempre o Docker Desktop exibe todos os recursos ocupados. Para uma melhor gestão, será possível adicionar uma extensão chamada [Portainer](https://www.portainer.io/) em Extensões no Docker Desktop.
+
+
+Ou em alternativa, será possível uma limpeza completa do *cache* utilizando:
 
 ```bash
 docker compose down
@@ -326,6 +336,13 @@ C:\TEMP\venvs\SQLab\Scripts\Activate.ps1
 pip install -r requirements.txt --upgrade --no-cache-dir
 pip cache purge
 ```
+PS: Em Windows 11/10, poderá existir restrição na execução de scripts PowerShell `.ps1`. Neste caso, pode desactivar essa restrição ou executar o `activate.bat` em alternativa.
+
+Para desactivar as restrições de execução de scripts `.ps1` abrir um terminal em mode de administrador e executar a seguinte instrução:
+> ```bash
+> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+> ```
+
 
 
 ## c) Correr Jupyter localmente em macOS/Linux:
