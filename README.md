@@ -217,12 +217,12 @@ docker compose up -d
 > No Docker Desktop, selecionar o serviço que está a correr e depois escolher o tab "Exec". 
 
 Isso é o equivalente a fazer:
-> ```bash
-> docker exec -it mysql_server    /bin/bash
-> docker exec -it postgres_server /bin/bash
-> docker exec -it mongodb_server  /bin/bash
-> docker exec -it oracle_server   /bin/bas
-> docker exec -it mssql_server    /bin/bash
+```bash
+docker exec -it mysql_server    /bin/bash
+docker exec -it postgres_server /bin/bash
+docker exec -it mongodb_server  /bin/bash
+docker exec -it oracle_server   /bin/bas
+docker exec -it mssql_server    /bin/bash
 ```
 
 
