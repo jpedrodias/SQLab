@@ -201,11 +201,13 @@ You can start a command line inside the service.
 > In Docker Desktop, select the running service and then choose the "Exec" tab.
 
 This is equivalent to running:
-> `docker exec -it mysql_server    /bin/bash`
-> `docker exec -it postgres_server /bin/bash`
-> `docker exec -it mongodb_server  /bin/bash`
-> `docker exec -it oracle_server   /bin/bash`
-> `docker exec -it mssql_server    /bin/bash`
+```bash
+docker exec -it mysql_server    /bin/bash
+docker exec -it postgres_server /bin/bash
+docker exec -it mongodb_server  /bin/bash
+docker exec -it oracle_server   /bin/bas
+docker exec -it mssql_server    /bin/bash
+```
 
 
 ### 3. Access credentials:
