@@ -213,6 +213,19 @@ docker compose up -d
 > 
 
 
+**super avançado:**
+É possível iniciar uma linha de comandos dentro do serviço. 
+> No Docker Desktop, selecionar o serviço que está a correr e depois escolher o tab "Exec". 
+
+Isso é o equivalente a fazer:
+> `docker exec -it mysql_server    /bin/bash`
+> `docker exec -it postgres_server /bin/bash`
+> `docker exec -it mongodb_server  /bin/bash`
+> `docker exec -it oracle_server   /bin/bash`
+> `docker exec -it mssql_server    /bin/bash`
+
+
+
 ### 3. Dados de acesso:
 Para aceder a um servidor de base de dados, utilizado uma das ferramentas aqui incluida, o servidor **não** pode ser `localhost` e terá de ser o servidor indicado. 
 Contudo, para ligação usando outras ferramentas, por exemplo, o DBeaver, o campo `Server host` será `localhost`.
