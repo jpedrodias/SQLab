@@ -163,11 +163,10 @@ docker compose up -d
 >    ```bash
 >    docker compose -f docker-compose-ALL.yml up
 >    ```
+![Footprint of all servers](img/footprint.png)  
 
 
 #### Extra - Menu to start services:
-![Footprint of all servers](img/footprint.png)  
-
 
 **Windows:**
 - Alternatively, you can start any of the above services by running the `batch` file:
