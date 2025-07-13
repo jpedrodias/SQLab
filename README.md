@@ -10,7 +10,6 @@
 ---
 
 
-
 # 🐳 Preparação do sistema para correr em Docker
 
 Nos ficheiros de *docker-compose* incluídos neste repositório existem diferentes cenários de base de dados e as respetivas ferramentas de administração que permitem a ligação a essas bases de dados:
@@ -23,8 +22,6 @@ Nos ficheiros de *docker-compose* incluídos neste repositório existem diferent
 | **docker-compose-oracle.yml**    | OracleDB CE (Community Edition) | Adminer_ci8, , CloudBeaver       |
 | **docker-compose-sqlserver.yml** | Microsoft SQL Server (Express)  | Adminer, CloudBeaver             |
 | **docker-compose-ALL.yml**       | Todas as anteriores             | Todas as anteriores              |
-
-
 
 
 ## Servidores incluídos
