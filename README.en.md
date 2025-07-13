@@ -391,4 +391,14 @@ pip cache purge
 - [pgAdmin](https://www.pgadmin.org/download/pgadmin-4-container/)
 - [Mongo Express](https://github.com/mongo-express/mongo-express)
 
+## c) other web tools:
+* [mockaroo](https://mockaroo.com/) - Generate random data
+* [dbdiagram.io](https://dbdiagram.io) - Draw ERD (Entity-Relationship Diagrams)
+* [draw.io](https://draw.io) - Draw ERD (Entity-Relationship Diagrams)
+* [SandboxSQL](https://sandboxsql.com/) - Online environment to practice SQL with real databases
+* [SQLiteOnline](https://sqliteonline.com/) - Online editor to test SQL in SQLite, PostgreSQL, MySQL, and others
+
+
 ---
+---
+end of file: (EN) Preparation for running SQL in Docker, Jupyter, or VM

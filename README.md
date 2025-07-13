@@ -409,11 +409,21 @@ pip cache purge
 - [MongoDB Compass](https://www.mongodb.com/try/download/compass) - para ligação a MongoDB
 
 
-## b) ferramentas web:
+## b) ferramentas web de ligação:
 - [Adminer](https://www.adminer.org/en/)
 - [CloudBeaver](https://cloudbeaver.io/)
 - [phpMyAdmin](https://www.phpmyadmin.net/)
 - [pgAdmin](https://www.pgadmin.org/download/pgadmin-4-container/)
 - [Mongo Express](https://github.com/mongo-express/mongo-express)
 
+
+## c) outras ferramentas web:
+* [mockarro](https://mockaroo.com/) - Criação dados aleatórios
+* [dbdiagram.io](https://dbdiagram.io) - Desenho de ERD (Entity-Relationship Diagrams)
+* [draw.io](https://draw.io) - Desenho de ERD (Entity-Relationship Diagrams)
+* [SandboxSQL](https://sandboxsql.com/) - Ambiente online para praticar SQL com bases de dados reais
+* [SQLiteOnline](https://sqliteonline.com/) - Editor online para testar SQL em SQLite, PostgreSQL, MySQL e outros
+
+
+---
 ---
