@@ -1,4 +1,4 @@
-# (EN) Preparation for running SQL in Docker, Jupyter, or VM
+# (EN) SQL Lab in Docker, Jupyter, or VM
 
 - 🐳 [Docker](#-system-preparation-for-running-in-docker)
 - 📓 [Jupyter Notebook](#-system-preparation-for-running-in-jupyter-notebook)
@@ -385,11 +385,11 @@ pip cache purge
 
 
 ## b) Web tools:
-- [Adminer](https://www.adminer.org/en/)
-- [CloudBeaver](https://cloudbeaver.io/)
-- [phpMyAdmin](https://www.phpmyadmin.net/)
-- [pgAdmin](https://www.pgadmin.org/download/pgadmin-4-container/)
-- [Mongo Express](https://github.com/mongo-express/mongo-express)
+- 🛠️ **[Adminer](https://www.adminer.org/en/)** — Lightweight, single-file interface compatible with multiple DBMSs
+- ☁️ **[CloudBeaver](https://cloudbeaver.io/)** — Universal web interface from DBeaver, compatible with all DBMSs
+- 🐘 **[pgAdmin](https://www.pgadmin.org/download/pgadmin-4-container/)** — Official PostgreSQL administration tool
+- 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Lightweight interface for MongoDB
+- 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Classic interface for MySQL/MariaDB
 
 ## c) other web tools:
 * [mockaroo](https://mockaroo.com/) - Generate random data
@@ -401,4 +401,4 @@ pip cache purge
 
 ---
 ---
-end of file: (EN) Preparation for running SQL in Docker, Jupyter, or VM
+end of file: (EN) SQL Lab in Docker, Jupyter, or VM
