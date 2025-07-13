@@ -1,4 +1,4 @@
-# Preparation for running SQL in Docker, Jupyter, or VM
+# (EN) Preparation for running SQL in Docker, Jupyter, or VM
 
 - 🐳 [Docker](#-system-preparation-for-running-in-docker)
 - 📓 [Jupyter Notebook](#-system-preparation-for-running-in-jupyter-notebook)
@@ -206,7 +206,7 @@ This is equivalent to running:
 docker exec -it mysql_server    /bin/bash
 docker exec -it postgres_server /bin/bash
 docker exec -it mongodb_server  /bin/bash
-docker exec -it oracle_server   /bin/bas
+docker exec -it oracle_server   /bin/bash
 docker exec -it mssql_server    /bin/bash
 ```
 
