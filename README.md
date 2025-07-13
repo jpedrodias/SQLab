@@ -427,3 +427,4 @@ pip cache purge
 
 ---
 ---
+end of file: (PT) Preparação para correr SQL em Docker, Jupyter ou VM
