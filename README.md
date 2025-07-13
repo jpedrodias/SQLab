@@ -1,4 +1,4 @@
-# (PT) Preparação para correr SQL em Docker, Jupyter ou VM
+# (PT) Laboratório de SQL em Docker, Jupyter ou VM
 
 - 🐳 [Docker](#-preparação-do-sistema-para-correr-em-docker)
 - 📓 [Jupyter Notebook](#-preparação-do-sistema-para-correr-em-jupyter-notebook)
@@ -410,11 +410,11 @@ pip cache purge
 
 
 ## b) ferramentas web de ligação:
-- [Adminer](https://www.adminer.org/en/)
-- [CloudBeaver](https://cloudbeaver.io/)
-- [phpMyAdmin](https://www.phpmyadmin.net/)
-- [pgAdmin](https://www.pgadmin.org/download/pgadmin-4-container/)
-- [Mongo Express](https://github.com/mongo-express/mongo-express)
+- 🛠️ **[Adminer](https://www.adminer.org/)** — Interface única, leve, compatível com vários SGBDs
+- ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Interface web universal do DBeaver, compatível com todos os SGBDs
+- 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
+- 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
+- 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
 
 
 ## c) outras ferramentas web:
@@ -427,4 +427,4 @@ pip cache purge
 
 ---
 ---
-end of file: (PT) Preparação para correr SQL em Docker, Jupyter ou VM
+end of file: (PT) Laboratório de SQL em Docker, Jupyter ou VM
