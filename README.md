@@ -424,4 +424,11 @@ pip cache purge
 
 ---
 ---
+
+# Aprender SQL
+- [Cheatsheets](https://github.com/FavioVazquez/ds-cheatsheets)
+
+
+---
+---
 end of file: (PT) Laboratório de SQL em Docker, Jupyter ou VM
