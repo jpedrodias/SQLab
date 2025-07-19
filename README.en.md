@@ -206,7 +206,7 @@ docker compose up -d
 > 
 
 
-**super advanced:**
+**Advanced:**
 You can start a command line inside the service.
 > In Docker Desktop, select the running service and then choose the "Exec" tab.
 
