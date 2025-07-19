@@ -219,7 +219,7 @@ docker compose up -d
 > 
 
 
-**super avançado:**
+**Avançado:**
 É possível iniciar uma linha de comandos dentro do serviço. 
 > No Docker Desktop, selecionar o serviço que está a correr e depois escolher o tab "Exec". 
 
