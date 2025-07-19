@@ -1,4 +1,16 @@
 # (PT) Laboratório de SQL em Docker, Jupyter ou VM
+O objetivo principal deste repositório é fornecer um ambiente de testes e aprendizagem para bases de dados relacionais e NoSQL, permitindo ao utilizador:
+1. Instalar e configurar rapidamente múltiplos SGBDs (MySQL, PostgreSQL, MongoDB, OracleDB e Microsoft SQL Server) através de Docker;
+1. Experimentar e praticar SQL em Jupyter Notebooks usando bibliotecas como o JupySQL;
+1. Executar ambientes pré-configurados em Máquinas Virtuais para quem preferir não usar Docker;
+1. Utilizar ferramentas Web e clientes gráficos para administração de bases de dados, sem necessidade de configurações complexas.
+Trata-se, portanto, de um laboratório portátil de bases de dados, ideal para aprendizagem, experimentação, ensino e desenvolvimento.
+
+
+Em resumo,destina-se a programadores, estudantes e professores que precisem de um laboratório completo de bases de dados, permitindo instalar e experimentar rapidamente vários SGBDs em ambientes isolados. É didático, modular e orientado para aprendizagem prática.
+
+
+
 
 - 🐳 [Docker](#-preparação-do-sistema-para-correr-em-docker)
 - 📓 [Jupyter Notebook](#-preparação-do-sistema-para-correr-em-jupyter-notebook)
