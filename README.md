@@ -233,6 +233,7 @@ docker exec -it postgres_server /bin/bash
 docker exec -it mongodb_server  /bin/bash
 docker exec -it oracle_server   /bin/bash
 docker exec -it mssql_server    /bin/bash
+docker exec -it redis_server    /bin/bash
 ```
 
 
@@ -295,14 +296,15 @@ Servidor: redis ou localhost
 ### 4. Clientes Web (sem instalações adicionais)
 Estas ferramentas incluidas permitem o acesso ao servidor de bases de dados, também sem qualquer instalação adicional. Contudo, nem todas as ferramentas permitem o acesso a todos as bases de dados. 
 
-|Ferramenta   |Porta |MySQL|Postgres|Oracle|MS SQL|MongoDB |Acesso |
-|-------------|------|-----|--------|------|------|--------|-------|
-|Adminer      |[8081](http://localhost:8081)  |✅  |✅      |❌    |✅   |❌ | none |
-|CloudBeaver  |[8082](http://localhost:8082)  |✅  |✅      |✅    |✅   |❌ | initial setup required |
-|pgAdmin      |[8083](http://localhost:8083)  |❌  |✅      |❌    |❌   |❌ | user: `admin@admin.com`, pass: `admin` |
-|Mongo Express|[8084](http://localhost:8084)  |❌  |❌      |❌    |❌   |✅ | user: `admin`, pass: `admin` |
-|Adminer_ci8  |[8085](http://localhost:8085)  |❌  |❌      |✅    |❌   |❌ | none |
-|phpMyAdmin   |[8086](http://localhost:8086)  |✅  |❌      |❌    |❌   |❌ | none |
+|Ferramenta   |Porta |MySQL|Postgres|Oracle|MS SQL|MongoDB |Redis|Acesso |
+|-------------|------|-----|--------|------|------|--------|-----|-------|
+|Adminer      |[8081](http://localhost:8081)  |✅  |✅      |❌    |✅   |❌ |❌  | none |
+|CloudBeaver  |[8082](http://localhost:8082)  |✅  |✅      |✅    |✅   |❌ |❌  | initial setup required |
+|pgAdmin      |[8083](http://localhost:8083)  |❌  |✅      |❌    |❌   |❌ |❌  | user: `admin@admin.com`, pass: `admin` |
+|Mongo Express|[8084](http://localhost:8084)  |❌  |❌      |❌    |❌   |✅ |❌  | user: `admin`, pass: `admin` |
+|Adminer_ci8  |[8085](http://localhost:8085)  |❌  |❌      |✅    |❌   |❌ |❌  | none |
+|phpMyAdmin   |[8086](http://localhost:8086)  |✅  |❌      |❌    |❌   |❌ |❌  | none |
+|DbGate       |[8087](http://localhost:8087)  |✅  |✅      |❌    |✅   |✅ |✅  | none |
 
 
 
