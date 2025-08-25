@@ -1,18 +1,18 @@
+
 # (EN) SQL Lab in Docker, Jupyter, or VM
 The main goal of this repository is to provide a testing and learning environment for relational and NoSQL databases, enabling users to:
-1. Quickly install and configure multiple DBMSs (MySQL, PostgreSQL, MongoDB, OracleDB, and Microsoft SQL Server) using Docker;
+1. Quickly install and configure multiple DBMSs (MySQL, PostgreSQL, MongoDB, OracleDB, Microsoft SQL Server, and Redis) using Docker;
 1. Experiment and practice SQL in Jupyter Notebooks using libraries like JupySQL;
 1. Run pre-configured environments in Virtual Machines for those who prefer not to use Docker;
 1. Use Web tools and graphical clients for database administration without complex configurations.
-
 This is, therefore, a portable database lab, ideal for learning, experimentation, teaching, and development.
 
 In summary, it is aimed at developers, students, and teachers who need a complete database lab, allowing them to quickly install and experiment with various DBMSs in isolated environments. It is educational, modular, and oriented towards practical learning.
 
-- 🐳 [Docker](#-system-preparation-for-running-in-docker)
-- 📓 [Jupyter Notebook](#-system-preparation-for-running-in-jupyter-notebook)
-- 🖥️ [Virtual Machine](#-system-preparation-for-running-in-virtual-machine)
-- 🧰 [Other tools](#-tools-for-database-connection)
+* 🐳 [Docker](#-system-preparation-for-running-in-docker)
+* 📓 [Jupyter Notebook](#-system-preparation-for-running-in-jupyter-notebook)
+* 🖥️ [Virtual Machine](#-system-preparation-for-running-in-virtual-machine)
+* 🧰 [Other tools](#-tools-for-database-connection)
 
 
 ---
@@ -29,25 +29,29 @@ The *docker-compose* files included in this repository provide different databas
 | **docker-compose-mongo.yml**     | MongoDB                         | Mongo Express                    |
 | **docker-compose-oracle.yml**    | OracleDB CE (Community Edition) | Adminer_ci8, CloudBeaver         |
 | **docker-compose-sqlserver.yml** | Microsoft SQL Server (Express)  | Adminer, CloudBeaver             |
+| **docker-compose-redis.yml**     | Redis                           | DbGate                           |
 | **docker-compose-ALL.yml**       | All of the above                | All of the above                 |
 
 
 ## Included servers
 
-- 🐬 **[MySQL](https://www.mysql.com/)** — Relational DBMS (RDBMS)
-- 🐘 **[PostgreSQL](https://www.postgresql.org/)** — Advanced relational DBMS (ORDBMS)
-- 🍃 **[MongoDB](https://www.mongodb.com/)** — NoSQL document-oriented database (Document Store)
-- 🔶 **[OracleDB CE](https://www.oracle.com/pt/database/technologies/appdev/xe.html)** — Enterprise relational DBMS, free *Community Edition* for testing and development
-- 🟦 **[Microsoft SQL Server Express](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)** — Microsoft's relational DBMS, free *Express* version for development and small applications
+* 🐬 **[MySQL](https://www.mysql.com/)** — Relational DBMS (RDBMS)
+* 🐘 **[PostgreSQL](https://www.postgresql.org/)** — Advanced relational DBMS (ORDBMS)
+* 🍃 **[MongoDB](https://www.mongodb.com/)** — NoSQL document-oriented database (Document Store)
+* 🔶 **[OracleDB CE](https://www.oracle.com/pt/database/technologies/appdev/xe.html)** — Enterprise relational DBMS, free *Community Edition* for testing and development
+* 🟦 **[Microsoft SQL Server Express](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)** — Microsoft's relational DBMS, free *Express* version for development and small applications
+* 🟥 **[Redis](https://redis.io/)** — In-memory NoSQL database, used for cache, queues, and key-value data storage
 
 
 ## Web administration tools
 
-- 🛠️ **[Adminer](https://www.adminer.org/)** — Lightweight, single-file interface compatible with multiple DBMSs
-- ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Universal web interface from DBeaver, compatible with all DBMSs
-- 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Official PostgreSQL administration tool
-- 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Lightweight interface for MongoDB
-- 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Classic interface for MySQL/MariaDB
+* 🛠️ **[Adminer](https://www.adminer.org/)** — Lightweight, single-file interface compatible with multiple DBMSs
+* ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Universal web interface from DBeaver, compatible with all DBMSs
+* 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Official PostgreSQL administration tool
+* 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Lightweight interface for MongoDB
+* 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Classic interface for MySQL/MariaDB
+* 🟧 **[DbGate](https://dbgate.io/)** — Web interface for SQL and NoSQL database administration (e.g., Redis, MongoDB)
+* 🔴 **[RedisInsight](https://redis.com/redis-enterprise/redis-insight/)** — Graphical tool for Redis database administration and visualization
 
 ---
 ---
@@ -272,14 +276,15 @@ database: tempdb (or leave empty)
 ### 4. Web Clients (no additional installation required)
 These included tools allow access to the database server without any additional installation. However, not all tools allow access to all databases.
 
-|Tool         |Port |MySQL|Postgres|Oracle|MS SQL|MongoDB |Access |
-|-------------|------|-----|--------|------|------|--------|-------|
-|Adminer      |[8081](http://localhost:8081)  |✅  |✅      |❌    |✅   |❌ | none |
-|CloudBeaver  |[8082](http://localhost:8082)  |✅  |✅      |✅    |✅   |❌ | initial setup required |
-|pgAdmin      |[8083](http://localhost:8083)  |❌  |✅      |❌    |❌   |❌ | user: `admin@admin.com`, pass: `admin` |
-|Mongo Express|[8084](http://localhost:8084)  |❌  |❌      |❌    |❌   |✅ | user: `admin`, pass: `admin` |
-|Adminer_ci8  |[8085](http://localhost:8085)  |❌  |❌      |✅    |❌   |❌ | none |
-|phpMyAdmin   |[8086](http://localhost:8086)  |✅  |❌      |❌    |❌   |❌ | none |
+|Tool         |Port |MySQL|Postgres|Oracle|MS SQL|MongoDB |Redis|Access |
+|-------------|------|-----|--------|------|------|--------|-----|-------|
+|Adminer      |[8081](http://localhost:8081)  |✅  |✅      |❌    |✅   |❌ |❌  | none |
+|CloudBeaver  |[8082](http://localhost:8082)  |✅  |✅      |✅    |✅   |❌ |❌  | initial setup required |
+|pgAdmin      |[8083](http://localhost:8083)  |❌  |✅      |❌    |❌   |❌ |❌  | user: `admin@admin.com`, pass: `admin` |
+|Mongo Express|[8084](http://localhost:8084)  |❌  |❌      |❌    |❌   |✅ |❌  | user: `admin`, pass: `admin` |
+|Adminer_ci8  |[8085](http://localhost:8085)  |❌  |❌      |✅    |❌   |❌ |❌  | none |
+|phpMyAdmin   |[8086](http://localhost:8086)  |✅  |❌      |❌    |❌   |❌ |❌  | none |
+|DbGate       |[8087](http://localhost:8087)  |✅  |✅      |✅    |✅   |✅ |✅  | none |
 
 
 
@@ -384,28 +389,30 @@ pip cache purge
 
 # 🧰 Tools for database connection:
 ## a) Applications:
-- [DBeaver](https://dbeaver.io/download/) - connect to different databases (sqlite, mysql, postgres, mongodb, oracle, etc)
-- [sqlite3](https://www.sqlite.org/download.html) - command-line tool for sqlite
-- [DB Browser for SQLite](https://sqlitebrowser.org/) - graphical tool for SQLite
-- [pgAdmin](https://www.pgadmin.org/download/) - connect to PostgreSQL databases
-- [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) - connect to mysql/mariadb
-- [SqlDbx](https://www.sqldbx.com/index.htm) - connect to different databases
-- [MongoDB Compass](https://www.mongodb.com/try/download/compass) - connect to MongoDB
-- [DbGate](https://dbgate.io/) - connect to SQL & NoSQL (e.g., MongoDB and Redis)
+* [DBeaver](https://dbeaver.io/download/) - connect to different databases (sqlite, mysql, postgres, mongodb, oracle, etc)
+* [sqlite3](https://www.sqlite.org/download.html) - command-line tool for sqlite
+* [DB Browser for SQLite](https://sqlitebrowser.org/) - graphical tool for SQLite
+* [pgAdmin](https://www.pgadmin.org/download/) - connect to PostgreSQL databases
+* [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) - connect to mysql/mariadb
+* [SqlDbx](https://www.sqldbx.com/index.htm) - connect to different databases
+* [MongoDB Compass](https://www.mongodb.com/try/download/compass) - connect to MongoDB
+* [DbGate](https://dbgate.io/) - connect to SQL & NoSQL (e.g., MongoDB and Redis)
+* [RedisInsight](https://redis.com/redis-enterprise/redis-insight/) - graphical tool for Redis database administration and visualization
 
 
 ## b) Web tools:
-- 🛠️ **[Adminer](https://www.adminer.org/en/)** — Lightweight, single-file interface compatible with multiple DBMSs
-- ☁️ **[CloudBeaver](https://cloudbeaver.io/)** — Universal web interface from DBeaver, compatible with all DBMSs
-- 🐘 **[pgAdmin](https://www.pgadmin.org/download/pgadmin-4-container/)** — Official PostgreSQL administration tool
-- 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Lightweight interface for MongoDB
-- 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Classic interface for MySQL/MariaDB
+* 🛠️ **[Adminer](https://www.adminer.org/en/)** — Lightweight, single-file interface compatible with multiple DBMSs
+* ☁️ **[CloudBeaver](https://cloudbeaver.io/)** — Universal web interface from DBeaver, compatible with all DBMSs
+* 🐘 **[pgAdmin](https://www.pgadmin.org/download/pgadmin-4-container/)** — Official PostgreSQL administration tool
+* 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Lightweight interface for MongoDB
+* 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Classic interface for MySQL/MariaDB
+* 🟧 **[DbGate](https://dbgate.io/)** — Web interface for SQL and NoSQL database administration (e.g., Redis, MongoDB)
 
 ## c) other web tools:
-* [mockaroo](https://mockaroo.com/) - Generate random data
-* [dbdiagram.io](https://dbdiagram.io) - Draw ERD (Entity-Relationship Diagrams)
 * [draw.io](https://draw.io) - Draw ERD (Entity-Relationship Diagrams)
+* [mockaroo](https://mockaroo.com/) - Generate random data
 * [SandboxSQL](https://sandboxsql.com/) - Online environment to practice SQL with real databases
+* [dbdiagram.io](https://dbdiagram.io) - Draw ERD (Entity-Relationship Diagrams)
 * [SQLiteOnline](https://sqliteonline.com/) - Online editor to test SQL in SQLite, PostgreSQL, MySQL, and others
 
 
