@@ -416,6 +416,7 @@ pip cache purge
 - [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) - para ligação a db mysql/mariadb
 - [SqlDbx](https://www.sqldbx.com/index.htm) - ligação a diferentes bases de dados;
 - [MongoDB Compass](https://www.mongodb.com/try/download/compass) - para ligação a MongoDB
+- [DbGate](https://dbgate.io/) - para ligação a SQL & NoSQL (Ex: MongoDB e Redis)
 
 
 ## b) ferramentas web de ligação:

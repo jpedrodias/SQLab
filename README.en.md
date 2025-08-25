@@ -391,6 +391,7 @@ pip cache purge
 - [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) - connect to mysql/mariadb
 - [SqlDbx](https://www.sqldbx.com/index.htm) - connect to different databases
 - [MongoDB Compass](https://www.mongodb.com/try/download/compass) - connect to MongoDB
+- [DbGate](https://dbgate.io/) - connect to SQL & NoSQL (e.g., MongoDB and Redis)
 
 
 ## b) Web tools:
