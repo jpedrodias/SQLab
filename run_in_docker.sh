@@ -12,6 +12,7 @@ show_menu() {
     echo "║ [ 3 ] - MongoDB                                ║"
     echo "║ [ 4 ] - OracleDB CE                            ║"
     echo "║ [ 5 ] - Microsoft SQL Server Express           ║"
+    echo "║ [ 6 ] - Redis                                  ║"
     echo "╠════════════════════════╦═══════════════════════╣"
     echo "║ [ A ] - Adminer        ║ F E R R A M E N T A S ║"
     echo "║ [ B ] - CloudBeaver    ╚═══════════════════════╣"
@@ -117,6 +118,7 @@ main() {
             3) run_service "mongo" ;;
             4) run_service "oracle" ;;
             5) run_service "sqlserver" ;;
+            6) run_service "redis" ;;
             "*") run_service "ALL" ;;
             [Aa]) run_service "adminer" ;;
             [Bb]) run_service "cloudbeaver" ;;

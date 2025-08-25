@@ -3,7 +3,7 @@ name: SQLab
 
 services:
   # Servidor 6: Redis Configuration
-redis:
+  redis:
     image: redis:latest
     container_name: redis_server
     restart: unless-stopped

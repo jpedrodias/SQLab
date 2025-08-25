@@ -15,6 +15,7 @@ echo ║ [ 2 ] - PostgreSQL     ╚═══════════════
 echo ║ [ 3 ] - MongoDB                                ║
 echo ║ [ 4 ] - OracleDB CE                            ║
 echo ║ [ 5 ] - Microsoft SQL Server Express           ║
+echo ║ [ 6 ] - Redis                                  ║
 echo ╠════════════════════════╦═══════════════════════╣
 echo ║ [ A ] - Adminer        ║ F E R R A M E N T A S ║
 echo ║ [ B ] - CloudBeaver    ╚═══════════════════════╣
@@ -35,6 +36,7 @@ if "%op%"=="2" %0 postgres
 if "%op%"=="3" %0 mongo
 if "%op%"=="4" %0 oracle
 if "%op%"=="5" %0 sqlserver
+if "%op%"=="6" %0 redis
 if "%op%"=="*" %0 ALL
 
 if /I "%op%"=="A" %0 adminer
