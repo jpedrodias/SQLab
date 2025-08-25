@@ -33,6 +33,7 @@ Nos ficheiros de *docker-compose* incluídos neste repositório existem diferent
 | **docker-compose-mongo.yml**     | MongoDB                         | Mongo Express                    |
 | **docker-compose-oracle.yml**    | OracleDB CE (Community Edition) | Adminer_ci8, , CloudBeaver       |
 | **docker-compose-sqlserver.yml** | Microsoft SQL Server (Express)  | Adminer, CloudBeaver             |
+| **docker-compose-redis.yml**     | Redis                           | DbGate                           |
 | **docker-compose-ALL.yml**       | Todas as anteriores             | Todas as anteriores              |
 
 
@@ -43,6 +44,7 @@ Nos ficheiros de *docker-compose* incluídos neste repositório existem diferent
 - 🍃 **[MongoDB](https://www.mongodb.com/)** — Base de dados NoSQL orientada a documentos (Document Store)
 - 🔶 **[OracleDB CE](https://www.oracle.com/pt/database/technologies/appdev/xe.html)** — SGBD relacional corporativo, versão gratuita *Community Edition* para testes e desenvolvimento
 - 🟦 **[Microsoft SQL Server Express](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)** — SGBD relacional da Microsoft, versão gratuita *Express* para desenvolvimento e aplicações pequenas
+- 🟥 **[Redis](https://redis.io/)** — Base de dados NoSQL em memória, utilizada para cache, filas e armazenamento de dados chave-valor
 
 
 
@@ -53,6 +55,7 @@ Nos ficheiros de *docker-compose* incluídos neste repositório existem diferent
 - 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
 - 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
 - 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
+- 🟧 **[DbGate](https://dbgate.io/)** — Interface web para administração de bases de dados SQL e NoSQL (ex: Redis, MongoDB)
 
 
 ---
@@ -281,6 +284,12 @@ password: mssql_Sup3rStrong3Password!
 base de dados: tempdb (ou deixar vazio)
 ```
 
+3.6. ao servidor 6 - `Redis`
+```yml
+Servidor: redis ou localhost
+```
+
+
 
 
 ### 4. Clientes Web (sem instalações adicionais)
@@ -425,6 +434,7 @@ pip cache purge
 - 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
 - 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
 - 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
+- 🟧 **[DbGate](https://dbgate.io/)** — Interface web para administração de bases de dados SQL e NoSQL (ex: Redis, MongoDB)
 
 
 ## c) outras ferramentas web:

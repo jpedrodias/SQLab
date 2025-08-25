@@ -1,0 +1,29 @@
+# docker-compose com ferramenta web adminer
+name: SQLab
+
+services:
+  # Web Interface for Database: vários
+  dbgate:
+    image: dbgate/dbgate
+    container_name: dbgate
+    restart: unless-stopped
+    ports:
+      - 8087:3000
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - dbgate_data:/root/.dbgate
+    
+    networks:
+      - default
+
+
+volumes:
+  dbgate_data:     # Web Interface for Database: dbgate
+
+
+networks:
+  default:
+    name: SQLab-network
+    #external: true # uncomment this on production
+    driver: bridge
+

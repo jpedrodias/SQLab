@@ -23,6 +23,7 @@ echo ║ [ C ] - pgAdmin                                ║
 echo ║ [ D ] - Mongo Express                          ║
 echo ║ [ E ] - Adminer_ci8                            ║
 echo ║ [ F ] - phpMyAdmin                             ║
+echo ║ [ G ] - DbGate                                 ║
 echo ╠════════════════════════════════════════════════╣
 echo ║ [ * ] - ALL Iniciar todos os servidores        ║
 echo ║ [ x ] - STOP Parar todos os servidores         ║
@@ -45,6 +46,7 @@ if /I "%op%"=="C" %0 pgadmin
 if /I "%op%"=="D" %0 mongo_express
 if /I "%op%"=="E" %0 adminer_oci8
 if /I "%op%"=="F" %0 phpmyadmin
+if /I "%op%"=="G" %0 dbgate
 
 if /I "%op%"=="X" goto STOP
 if "%op%"=="!" goto PURGE

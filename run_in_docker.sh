@@ -20,6 +20,7 @@ show_menu() {
     echo "║ [ D ] - Mongo Express                          ║"
     echo "║ [ E ] - Adminer_ci8                            ║"
     echo "║ [ F ] - phpMyAdmin                             ║"
+    echo "║ [ G ] - DbGate                                 ║"
     echo "╠════════════════════════════════════════════════╣"
     echo "║ [ * ] - ALL Iniciar todos os servidores        ║"
     echo "║ [ x ] - STOP Parar todos os servidores         ║"
@@ -126,6 +127,7 @@ main() {
             [Dd]) run_service "mongo_express" ;;
             [Ee]) run_service "adminer_oci8" ;;
             [Ff]) run_service "phpmyadmin" ;;
+            [Gg]) run_service "dbgate" ;;
             [Xx]) stop_all ;;
             "!") purge_all ;;
             0) 
