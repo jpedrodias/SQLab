@@ -1,0 +1,36 @@
+# docker-compose com servidor Redis
+name: SQLab
+
+services:
+  # Servidor 6: Redis Configuration
+redis:
+    image: redis:latest
+    container_name: redis_server
+    restart: unless-stopped
+    command: >
+      redis-server
+      --save "3600 1"
+      --appendonly no
+      --dir /data
+      --dbfilename dump.rdb
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    stop_grace_period: 30s
+
+volumes:
+  redis_data:      # Servidor 6: Redis
+
+networks:
+  default:
+    name: SQLab-network
+    #external: true # uncomment this on production
+    driver: bridge
