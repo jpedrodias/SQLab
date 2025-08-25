@@ -12,10 +12,10 @@ Em resumo,destina-se a programadores, estudantes e professores que precisem de u
 
 
 
-- 🐳 [Docker](#-preparação-do-sistema-para-correr-em-docker)
-- 📓 [Jupyter Notebook](#-preparação-do-sistema-para-correr-em-jupyter-notebook)
-- 🖥️ [Máquina virtual](#-preparação-do-sistema-para-correr-em-máquina-virtual)
-- 🧰 [Outras ferramentas](#-ferramentas-para-ligação-a-bases-de-dados)
+* 🐳 [Docker](#-preparação-do-sistema-para-correr-em-docker)
+* 📓 [Jupyter Notebook](#-preparação-do-sistema-para-correr-em-jupyter-notebook)
+* 🖥️ [Máquina virtual](#-preparação-do-sistema-para-correr-em-máquina-virtual)
+* 🧰 [Outras ferramentas](#-ferramentas-para-ligação-a-bases-de-dados)
 
 
 ---
@@ -39,23 +39,24 @@ Nos ficheiros de *docker-compose* incluídos neste repositório existem diferent
 
 ## Servidores incluídos
 
-- 🐬 **[MySQL](https://www.mysql.com/)** — SGBD relacional (RDBMS)
-- 🐘 **[PostgreSQL](https://www.postgresql.org/)** — SGBD relacional avançado (ORDBMS)
-- 🍃 **[MongoDB](https://www.mongodb.com/)** — Base de dados NoSQL orientada a documentos (Document Store)
-- 🔶 **[OracleDB CE](https://www.oracle.com/pt/database/technologies/appdev/xe.html)** — SGBD relacional corporativo, versão gratuita *Community Edition* para testes e desenvolvimento
-- 🟦 **[Microsoft SQL Server Express](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)** — SGBD relacional da Microsoft, versão gratuita *Express* para desenvolvimento e aplicações pequenas
-- 🟥 **[Redis](https://redis.io/)** — Base de dados NoSQL em memória, utilizada para cache, filas e armazenamento de dados chave-valor
+* 🐬 **[MySQL](https://www.mysql.com/)** — SGBD relacional (RDBMS)
+* 🐘 **[PostgreSQL](https://www.postgresql.org/)** — SGBD relacional avançado (ORDBMS)
+* 🍃 **[MongoDB](https://www.mongodb.com/)** — Base de dados NoSQL orientada a documentos (Document Store)
+* 🔶 **[OracleDB CE](https://www.oracle.com/pt/database/technologies/appdev/xe.html)** — SGBD relacional corporativo, versão gratuita *Community Edition* para testes e desenvolvimento
+* 🟦 **[Microsoft SQL Server Express](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)** — SGBD relacional da Microsoft, versão gratuita *Express* para desenvolvimento e aplicações pequenas
+* 🟥 **[Redis](https://redis.io/)** — Base de dados NoSQL em memória, utilizada para cache, filas e armazenamento de dados chave-valor
 
 
 
 ## Ferramentas de administração via Web
 
-- 🛠️ **[Adminer](https://www.adminer.org/)** — Interface única, leve, compatível com vários SGBDs
-- ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Interface web universal do DBeaver, compatível com todos os SGBDs
-- 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
-- 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
-- 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
-- 🟧 **[DbGate](https://dbgate.io/)** — Interface web para administração de bases de dados SQL e NoSQL (ex: Redis, MongoDB)
+* 🛠️ **[Adminer](https://www.adminer.org/)** — Interface única, leve, compatível com vários SGBDs
+* ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Interface web universal do DBeaver, compatível com todos os SGBDs
+* 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
+* 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
+* 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
+* 🟧 **[DbGate](https://dbgate.io/)** — Interface web para administração de bases de dados SQL e NoSQL (ex: Redis, MongoDB)
+* 🔴 **[RedisInsight](https://redis.com/redis-enterprise/redis-insight/)** - ferramenta gráfica para administração e visualização de bases de dados Redis
 
 
 ---
@@ -69,9 +70,9 @@ Nos ficheiros de *docker-compose* incluídos neste repositório existem diferent
 
 Certifique-se de que tem **Git**, **WSL** e **Docker Desktop** instalados:
 
-- 🐳 [Git](https://git-scm.com/downloads)
-- 🐧 [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/pt-pt/windows/wsl/install)
-- 🐙 [Docker Desktop](https://www.docker.com/get-started/)
+* 🐳 [Git](https://git-scm.com/downloads)
+* 🐧 [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/pt-pt/windows/wsl/install)
+* 🐙 [Docker Desktop](https://www.docker.com/get-started/)
 
 
 
@@ -172,6 +173,13 @@ docker compose up -d
 - Para correr a versão com a base de dados da Microsoft SQL Server, usar o comando:
 >    ```bash
 >    docker compose -f docker-compose-sqlserver.yml up
+>    ```
+
+
+#### Extra - Servidor 6: Redis
+- Para correr a versão com a base de dados Redis, usar o comando:
+>    ```bash
+>    docker compose -f docker-compose-redis.yml up
 >    ```
 
 
@@ -304,7 +312,7 @@ Estas ferramentas incluidas permitem o acesso ao servidor de bases de dados, tam
 |Mongo Express|[8084](http://localhost:8084)  |❌  |❌      |❌    |❌   |✅ |❌  | user: `admin`, pass: `admin` |
 |Adminer_ci8  |[8085](http://localhost:8085)  |❌  |❌      |✅    |❌   |❌ |❌  | none |
 |phpMyAdmin   |[8086](http://localhost:8086)  |✅  |❌      |❌    |❌   |❌ |❌  | none |
-|DbGate       |[8087](http://localhost:8087)  |✅  |✅      |❌    |✅   |✅ |✅  | none |
+|DbGate       |[8087](http://localhost:8087)  |❌  |✅      |✅    |✅   |✅ |✅  | none |
 
 
 
@@ -420,30 +428,31 @@ pip cache purge
 
 # 🧰 Ferramentas para ligação a bases de dados:
 ## a) aplicações:
-- [DBeaver](https://dbeaver.io/download/) - ligação a diferentes bases de dados (sqlite, mysql, postgres, mongodb, oracle, etc);
-- [sqlite3](https://www.sqlite.org/download.html) - ferramenta de linha de comandos para ligar a sqlite;
-- [DB Browser for SQLite](https://sqlitebrowser.org/) - ferramenta gráfica para SQLite;
-- [pgAdmin](https://www.pgadmin.org/download/) - ligação a bases de dados PostgreSQL;
-- [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) - para ligação a db mysql/mariadb
-- [SqlDbx](https://www.sqldbx.com/index.htm) - ligação a diferentes bases de dados;
-- [MongoDB Compass](https://www.mongodb.com/try/download/compass) - para ligação a MongoDB
-- [DbGate](https://dbgate.io/) - para ligação a SQL & NoSQL (Ex: MongoDB e Redis)
+* [DBeaver](https://dbeaver.io/download/) - ligação a diferentes bases de dados (sqlite, mysql, postgres, mongodb, oracle, etc);
+* [sqlite3](https://www.sqlite.org/download.html) - ferramenta de linha de comandos para ligar a sqlite;
+* [DB Browser for SQLite](https://sqlitebrowser.org/) - ferramenta gráfica para SQLite;
+* [pgAdmin](https://www.pgadmin.org/download/) - ligação a bases de dados PostgreSQL;
+* [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) - para ligação a db mysql/mariadb
+* [SqlDbx](https://www.sqldbx.com/index.htm) - ligação a diferentes bases de dados;
+* [MongoDB Compass](https://www.mongodb.com/try/download/compass) - para ligação a MongoDB
+* [DbGate](https://dbgate.io/) - para ligação a SQL & NoSQL (Ex: MongoDB e Redis)
+* [RedisInsight](https://redis.com/redis-enterprise/redis-insight/) - ferramenta gráfica para administração e visualização de bases de dados Redis
 
 
 ## b) ferramentas web de ligação:
-- 🛠️ **[Adminer](https://www.adminer.org/)** — Interface única, leve, compatível com vários SGBDs
-- ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Interface web universal do DBeaver, compatível com todos os SGBDs
-- 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
-- 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
-- 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
-- 🟧 **[DbGate](https://dbgate.io/)** — Interface web para administração de bases de dados SQL e NoSQL (ex: Redis, MongoDB)
+* 🛠️ **[Adminer](https://www.adminer.org/)** — Interface única, leve, compatível com vários SGBDs
+* ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Interface web universal do DBeaver, compatível com todos os SGBDs
+* 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
+* 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
+* 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
+* 🟧 **[DbGate](https://dbgate.io/)** — Interface web para administração de bases de dados SQL e NoSQL (ex: Redis, MongoDB)
 
 
 ## c) outras ferramentas web:
-* [mockarro](https://mockaroo.com/) - Criação dados aleatórios
-* [dbdiagram.io](https://dbdiagram.io) - Desenho de ERD (Entity-Relationship Diagrams)
 * [draw.io](https://draw.io) - Desenho de ERD (Entity-Relationship Diagrams)
+* [mockarro](https://mockaroo.com/) - Criação dados aleatórios
 * [SandboxSQL](https://sandboxsql.com/) - Ambiente online para praticar SQL com bases de dados reais
+* [dbdiagram.io](https://dbdiagram.io) - Desenho de ERD (Entity-Relationship Diagrams)
 * [SQLiteOnline](https://sqliteonline.com/) - Editor online para testar SQL em SQLite, PostgreSQL, MySQL e outros
 
 
@@ -451,7 +460,7 @@ pip cache purge
 ---
 
 # Aprender SQL
-- [Cheatsheets](https://github.com/FavioVazquez/ds-cheatsheets)
+* [Cheatsheets](https://github.com/FavioVazquez/ds-cheatsheets)
 
 
 ---
