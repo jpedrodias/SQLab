@@ -1,4 +1,6 @@
-# docker-compose com 5 servidores: mysql, postgres, mongodb, oracle e ms sql server e ferramentas web interface: adminer, phpmyadmin, pgAdmin e mongo-express
+# docker-compose com:
+# servidores: mysql, postgres, mongodb, oracle, ms sql server, redis
+# ferramentas web: adminer, phpmyadmin, pgAdmin, mongo-express e dbgate
 name: SQLab
 
 services:
@@ -126,6 +128,30 @@ services:
       timeout: 10s
       retries: 3
 
+  # Servidor 6: Redis
+  redis:
+    image: redis:latest
+    container_name: redis_server
+    restart: unless-stopped
+    command: >
+      redis-server
+      --save "3600 1"
+      --appendonly no
+      --dir /data
+      --dbfilename dump.rdb
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data
+    networks:
+      - default
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    stop_grace_period: 30s
+
 
   # Web Interface for Database: vários
   adminer:
@@ -199,6 +225,7 @@ services:
     networks:
       - default
 
+  # Web Interface for Database: Oracle
   adminer_oci8:
     image: soivangoi/nginx-php-adminer-oci8:latest # Adminer with Oracle support
     container_name: adminer-oracle
@@ -232,16 +259,32 @@ services:
     networks:
       - default
 
+  # Web Interface for Database: dbgate
+  dbgate:
+    image: dbgate/dbgate
+    container_name: dbgate
+    restart: unless-stopped
+    ports:
+      - 8087:3000
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - dbgate_data:/root/.dbgate
+    networks:
+      - default
+
 
 volumes:
   mysql_data:       # Servidor 1: MySQL
   postgres_data:    # Servidor 2: PostgreSQL
   mongodb_data:     # Servidor 3: MongoDB
-  mongodb_config:   # MongoDB Configurations
-  pgadmin_data:     # Web Interfaces for Databases: pgAdmin
   oracle_data:      # Servidor 4: Oracle Database Free (XE/23c)
   mssqlserver_data: # Servidor 5: MS SQL Server
+  redis_data:       # Servidor 6: Redis
+  mongodb_config:   # MongoDB Configurations
+  pgadmin_data:     # Web Interfaces for Databases: pgAdmin
   cloudbeaver_data: # CloudBeaver workspace
+  dbgate_data:      # Web Interface for Database: dbgate
+
 
 
 networks:
