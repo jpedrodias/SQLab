@@ -87,7 +87,10 @@ purge_all() {
         
         echo "Limpando redes..."
         docker network prune -f
-        
+
+        echo "Limpando o cache do builder..."
+        docker builder prune --all -f
+
         echo "Limpeza completa do sistema..."
         docker system prune -a --volumes -f
         
