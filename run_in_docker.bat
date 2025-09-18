@@ -10,14 +10,14 @@ set op=""
 cls
 echo Escolha o serviço Docker a iniciar:
 echo ╔════════════════════════╦═══════════════════════╗
-echo ║ [ 1 ] - MySQL          ║ S E R V I D O R E S   ║
+echo ║ [ 1 ] - MySQL          ║ S E R V E R S         ║
 echo ║ [ 2 ] - PostgreSQL     ╚═══════════════════════╣
 echo ║ [ 3 ] - MongoDB                                ║
 echo ║ [ 4 ] - OracleDB CE                            ║
 echo ║ [ 5 ] - Microsoft SQL Server Express           ║
 echo ║ [ 6 ] - Redis                                  ║
 echo ╠════════════════════════╦═══════════════════════╣
-echo ║ [ A ] - Adminer        ║ F E R R A M E N T A S ║
+echo ║ [ A ] - Adminer        ║ W E B   T O O L S     ║
 echo ║ [ B ] - CloudBeaver    ╚═══════════════════════╣
 echo ║ [ C ] - pgAdmin                                ║
 echo ║ [ D ] - Mongo Express                          ║
