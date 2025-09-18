@@ -8,7 +8,7 @@ if not "%1"=="" goto RUN
 :MENU
 set op=""
 cls
-echo Escolha o serviço Docker a iniciar:
+echo Choose the Docker service to start:
 echo ╔════════════════════════╦═══════════════════════╗
 echo ║ [ 1 ] - MySQL          ║ S E R V E R S         ║
 echo ║ [ 2 ] - PostgreSQL     ╚═══════════════════════╣

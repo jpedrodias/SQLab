@@ -5,7 +5,7 @@
 # Função para mostrar o menu
 show_menu() {
     clear
-    echo "Escolha o serviço Docker a iniciar:"
+    echo "Choose the Docker service to start:"
     echo "╔════════════════════════╦═══════════════════════╗"
     echo "║ [ 1 ] - MySQL          ║ S E R V E R S         ║"
     echo "║ [ 2 ] - PostgreSQL     ╚═══════════════════════╣"
