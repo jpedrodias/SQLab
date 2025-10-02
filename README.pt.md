@@ -455,7 +455,7 @@ pip cache purge
 * [SandboxSQL](https://sandboxsql.com/) - Ambiente online para praticar SQL com bases de dados reais
 * [dbdiagram.io](https://dbdiagram.io) - Desenho de ERD (Entity-Relationship Diagrams)
 * [SQLiteOnline](https://sqliteonline.com/) - Editor online para testar SQL em SQLite, PostgreSQL, MySQL e outros
-
+* [Programiz Online SQL Editor](https://www.programiz.com/sql/online-compiler) - Online editor to test SQL
 
 ---
 ---
