@@ -30,14 +30,14 @@ services:
 
   # Servidor 2: PostgreSQL Configuration
   postgres:
-    image: postgres:16
+    image: postgres:latest
     container_name: postgres_server
     restart: unless-stopped
     ports:
       - 5432:5432
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
