@@ -30,7 +30,7 @@ services:
 
   # Servidor 2: PostgreSQL Configuration
   postgres:
-    image: postgres:latest
+    image: postgres:16
     container_name: postgres_server
     restart: unless-stopped
     ports:
