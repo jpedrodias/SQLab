@@ -318,11 +318,11 @@ docker system prune -a --volumes -f
 # 📓 System preparation for running in Jupyter Notebook:
 `JupySQL` allows you to run SQL commands and create charts from large datasets in Jupyter using the %sql, %%sql, and %sqlplot magics. JupySQL is compatible with all major databases (e.g., PostgreSQL, MySQL, SQL Server), data warehouses (like Snowflake, BigQuery, Redshift), and embedded engines (SQLite and DuckDB).
 
-[see JupySQL](https://jupysql.ploomber.io/en/latest/quick-start.html)
+[see JupySQL Documentation](https://jupysql.readthedocs.io/en/latest/quick-start.html)
 
 
 ```python
-!pip install ipykernel jupyterlab jupysql --upgrade --no-cache-dir
+!pip install ipykernel jupyterlab jupysql psycopg2 psycopg2-binary --upgrade --no-cache-dir
 !pip cache purge
 
 %load_ext sql
