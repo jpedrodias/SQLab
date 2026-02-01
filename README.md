@@ -321,16 +321,29 @@ docker system prune -a --volumes -f
 [see JupySQL Documentation](https://jupysql.readthedocs.io/en/latest/quick-start.html)
 
 
+Install extentions
 ```python
-!pip install ipykernel jupyterlab jupysql psycopg2 psycopg2-binary --upgrade --no-cache-dir
-!pip cache purge
+pip install ipykernel jupyterlab jupysql psycopg2 psycopg2-binary --upgrade --no-cache-dir
+pip cache purge
+```
 
+Load and config extentions: sqlite
+```text
 %load_ext sql
 %sql sqlite:///database.sqlite
 
 %config SqlMagic.displaylimit = 0
 %sql PRAGMA foreign_keys = ON
 ```
+
+Load and config extentions: postgres
+```text
+%load_ext sql
+sql postgresql://postgres_user:postgres_password@localhost:5432/mydatabase
+
+%config SqlMagic.displaylimit = 0
+```
+
 
 ## a) Run Jupyter Online:
 - [Google Colab](https://colab.research.google.com/)
