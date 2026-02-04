@@ -351,7 +351,7 @@ pip install ipykernel jupyterlab jupysql pymysql --upgrade --no-cache-dir
 Add this to a empty cell in your .ipynb
 ```text
 %load_ext sql
-%sql mysql+mysqldb://mysql_user:mysql_password@localhost:3306/mydatabase
+%sql mysql+pymysql://mysql_user:mysql_password@localhost:3306/mydatabase
 
 %config SqlMagic.displaylimit = 0
 ```
