@@ -321,13 +321,19 @@ docker system prune -a --volumes -f
 [see JupySQL Documentation](https://jupysql.readthedocs.io/en/latest/quick-start.html)
 
 
-Install extentions
+To install and run Jupyter, consider the instruction in "Run Jupyter locally".
+
+
+
+**DATABASE: SQLITE**
+Install this python extentions using `pip`
 ```python
-pip install ipykernel jupyterlab jupysql psycopg2 psycopg2-binary --upgrade --no-cache-dir
+pip install ipykernel jupyterlab jupysql --upgrade --no-cache-dir
 pip cache purge
 ```
 
 Load and config extentions: sqlite
+Add this to a empty cell in your .ipynb
 ```text
 %load_ext sql
 %sql sqlite:///database.sqlite
@@ -336,13 +342,36 @@ Load and config extentions: sqlite
 %sql PRAGMA foreign_keys = ON
 ```
 
-Load and config extentions: postgres
+**BATABASE: MySQL**
+Install this python extentions using `pip`
+```bash
+pip install ipykernel jupyterlab jupysql pymysql --upgrade --no-cache-dir
+```
+
+Add this to a empty cell in your .ipynb
+```text
+%load_ext sql
+%sql mysql+mysqldb://mysql_user:mysql_password@localhost:3306/mydatabase
+
+%config SqlMagic.displaylimit = 0
+```
+
+
+**BATABASE: Postgres**
+Install this python extentions using `pip`
+```bash
+pip install psycopg2 psycopg2-binary --upgrade --no-cache-dir
+```
+
+Add this to a empty cell in your .ipynb
 ```text
 %load_ext sql
 sql postgresql://postgres_user:postgres_password@localhost:5432/mydatabase
 
 %config SqlMagic.displaylimit = 0
 ```
+
+
 
 
 ## a) Run Jupyter Online:
