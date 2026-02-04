@@ -360,13 +360,13 @@ Add this to a empty cell in your .ipynb
 **BATABASE: Postgres**
 Install this python extentions using `pip`
 ```bash
-pip install psycopg2 psycopg2-binary --upgrade --no-cache-dir
+pip install ipykernel jupyterlab jupysql psycopg2 psycopg2-binary --upgrade --no-cache-dir
 ```
 
 Add this to a empty cell in your .ipynb
 ```text
 %load_ext sql
-sql postgresql://postgres_user:postgres_password@localhost:5432/mydatabase
+%sql postgresql://postgres_user:postgres_password@localhost:5432/mydatabase
 
 %config SqlMagic.displaylimit = 0
 ```
