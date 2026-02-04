@@ -39,89 +39,86 @@ Nos ficheiros de *docker-compose* incluídos neste repositório existem diferent
 
 ## Servidores incluídos
 
-* 🐬 **[MySQL](https://www.mysql.com/)** — SGBD relacional (RDBMS)
-* 🐘 **[PostgreSQL](https://www.postgresql.org/)** — SGBD relacional avançado (ORDBMS)
-* 🍃 **[MongoDB](https://www.mongodb.com/)** — Base de dados NoSQL orientada a documentos (Document Store)
-* 🔶 **[OracleDB CE](https://www.oracle.com/pt/database/technologies/appdev/xe.html)** — SGBD relacional corporativo, versão gratuita *Community Edition* para testes e desenvolvimento
-* 🟦 **[Microsoft SQL Server Express](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)** — SGBD relacional da Microsoft, versão gratuita *Express* para desenvolvimento e aplicações pequenas
-* 🟥 **[Redis](https://redis.io/)** — Base de dados NoSQL em memória, utilizada para cache, filas e armazenamento de dados chave-valor
 
+# 📓 Preparação do sistema para correr em Jupyter Notebook:
+O `JupySQL` permite executar comandos SQL e criar gráficos a partir de grandes conjuntos de dados no Jupyter, usando as magias `%sql`, `%%sql` e `%sqlplot`. O JupySQL é compatível com as principais bases de dados (por exemplo, PostgreSQL, MySQL, SQL Server), data warehouses (como Snowflake, BigQuery, Redshift) e motores embebidos (SQLite e DuckDB).
 
+[ver a documentação do JupySQL](https://jupysql.readthedocs.io/en/latest/quick-start.html)
 
-## Ferramentas de administração via Web
+Para instalar e executar o Jupyter, siga as instruções em "Run Jupyter locally" (ver secção correspondente neste ficheiro).
 
-* 🛠️ **[Adminer](https://www.adminer.org/)** — Interface única, leve, compatível com vários SGBDs
-* ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Interface web universal do DBeaver, compatível com todos os SGBDs
-* 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
-* 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
-* 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
-* 🟧 **[DbGate](https://dbgate.io/)** — Interface web para administração de bases de dados SQL e NoSQL (ex: Redis, MongoDB)
-* 🔴 **[RedisInsight](https://redis.com/redis-enterprise/redis-insight/)** - ferramenta gráfica para administração e visualização de bases de dados Redis
-
-
----
----
-
-
-
-## 🛠️ Etapas da instalação
-
-### 0. Pré-requisitos
-
-Certifique-se de que tem **Git**, **WSL** e **Docker Desktop** instalados:
-
-* 🐳 [Git](https://git-scm.com/downloads)
-* 🐧 [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/pt-pt/windows/wsl/install)
-* 🐙 [Docker Desktop](https://www.docker.com/get-started/)
-
-
-
-**Windows:**
-Como alternativa, em windows, é possível fazer esta instalação usando o **winget**:
-
+**BASE DE DADOS: SQLITE**
+Instale as extensões Python necessárias usando `pip`:
 ```bash
-wsl --install
-wsl --update
-winget update
-winget install -e --id Git.Git
-winget install -e --id Docker.DockerDesktop
+pip install ipykernel jupyterlab jupysql --upgrade --no-cache-dir
+pip cache purge
 ```
 
-**macOS:**
-Como alternativa, em macOS, é possível fazer esta instalação usando o **Homebrew**:
+Carregar e configurar a extensão para SQLite:
+Adicione o seguinte a uma célula vazia no seu ficheiro `.ipynb`:
+```text
+%load_ext sql
+%sql sqlite:///database.sqlite
 
-```bash
-# Instalar Homebrew (se ainda não estiver instalado)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Instalar Git e Docker Desktop
-brew install git
-brew install --cask docker
+%config SqlMagic.displaylimit = 0
+%sql PRAGMA foreign_keys = ON
 ```
 
-**Linux (Ubuntu/Debian):**
-Para distribuições baseadas em Debian, use o **apt**:
-
+**BASE DE DADOS: MySQL**
+Instale as extensões Python necessárias usando `pip`:
 ```bash
-# Atualizar repositórios
-sudo apt update
+pip install ipykernel jupyterlab jupysql pymysql --upgrade --no-cache-dir
+```
 
-# Instalar Git
-sudo apt install git
+Adicione o seguinte a uma célula vazia no seu ficheiro `.ipynb`:
+```text
+%load_ext sql
+%sql mysql+pymysql://mysql_user:mysql_password@localhost:3306/mydatabase
 
-# Instalar Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker $USER
+%config SqlMagic.displaylimit = 0
+```
 
-# Reiniciar sessão ou executar:
-newgrp docker
+**BASE DE DADOS: PostgreSQL**
+Instale as extensões Python necessárias usando `pip`:
+```bash
+pip install ipykernel jupyterlab jupysql psycopg2 psycopg2-binary --upgrade --no-cache-dir
+```
+
+Adicione o seguinte a uma célula vazia no seu ficheiro `.ipynb`:
+```text
+%load_ext sql
+%sql postgresql://postgres_user:postgres_password@localhost:5432/mydatabase
+
+%config SqlMagic.displaylimit = 0
+```
+
+## a) Correr Jupyter online:
+- [Google Colab](https://colab.research.google.com/)
+- [Try Jupyter Lab](https://jupyter.org/try-jupyter/lab/)
+
+
+## b) Correr Jupyter localmente em Windows:
+```bash
+python -m venv C:\TEMP\venvs\SQLab
+C:\TEMP\venvs\SQLab\Scripts\Activate.ps1
+pip install -r requirements.txt --upgrade --no-cache-dir
+pip cache purge
+```
+PS: Em Windows 11/10, pode existir uma restrição na execução de scripts PowerShell (`.ps1`). Neste caso, pode desactivar essa restrição ou executar o `activate.bat` em alternativa.
+
+Para desactivar a restrição de execução de scripts `.ps1`, abra um terminal em modo administrador e execute:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
 ```
 
 
-
-### 1. Clonar este repositório
+## c) Correr Jupyter localmente em macOS/Linux:
 ```bash
+python3 -m venv /tmp/SQLab
+source /tmp/SQLab/bin/activate
+pip install -r requirements.txt --upgrade --no-cache-dir
+pip cache purge
+```
 git clone https://github.com/jpedrodias/SQLab.git
 cd SQLab
 ```
@@ -348,21 +345,60 @@ docker system prune -a --volumes -f
 
 
 
-# 📓 Preparação do sistema para correr em Jupyter Notebook:
-O `JupySQL` permite executar comandos SQL e criar gráficos de grandes conjuntos de dados no Jupyter através das magias %sql, %%sql e %sqlplot. O JupySQL é compatível com todos os principais bancos de dados (por exemplo, PostgreSQL, MySQL, SQL Server), data warehouses (como Snowflake, BigQuery, Redshift) e motores embarcados (SQLite e DuckDB).
+# 📓 System preparation for running in Jupyter Notebook:
+`JupySQL` allows you to run SQL commands and create charts from large datasets in Jupyter using the %sql, %%sql, and %sqlplot magics. JupySQL is compatible with all major databases (e.g., PostgreSQL, MySQL, SQL Server), data warehouses (like Snowflake, BigQuery, Redshift), and embedded engines (SQLite and DuckDB).
 
-[ver JupySQL](https://jupysql.ploomber.io/en/latest/quick-start.html)
+[see JupySQL Documentation](https://jupysql.readthedocs.io/en/latest/quick-start.html)
 
 
+To install and run Jupyter, consider the instruction in "Run Jupyter locally".
+
+
+
+**DATABASE: SQLITE**
+Install this python extentions using `pip`
 ```python
-!pip install ipykernel jupyterlab jupysql --upgrade --no-cache-dir
-!pip cache purge
+pip install ipykernel jupyterlab jupysql --upgrade --no-cache-dir
+pip cache purge
+```
 
+Load and config extentions: sqlite
+Add this to a empty cell in your .ipynb
+```text
 %load_ext sql
 %sql sqlite:///database.sqlite
 
 %config SqlMagic.displaylimit = 0
 %sql PRAGMA foreign_keys = ON
+```
+
+**BATABASE: MySQL**
+Install this python extentions using `pip`
+```bash
+pip install ipykernel jupyterlab jupysql pymysql --upgrade --no-cache-dir
+```
+
+Add this to a empty cell in your .ipynb
+```text
+%load_ext sql
+%sql mysql+pymysql://mysql_user:mysql_password@localhost:3306/mydatabase
+
+%config SqlMagic.displaylimit = 0
+```
+
+
+**BATABASE: Postgres**
+Install this python extentions using `pip`
+```bash
+pip install ipykernel jupyterlab jupysql psycopg2 psycopg2-binary --upgrade --no-cache-dir
+```
+
+Add this to a empty cell in your .ipynb
+```text
+%load_ext sql
+%sql postgresql://postgres_user:postgres_password@localhost:5432/mydatabase
+
+%config SqlMagic.displaylimit = 0
 ```
 
 ## a) Correr Jupyter Online:
