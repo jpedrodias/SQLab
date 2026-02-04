@@ -1,5 +1,384 @@
 # (PT) Laboratório de SQL em Docker, Jupyter ou VM
 O objetivo principal deste repositório é fornecer um ambiente de testes e aprendizagem para bases de dados relacionais e NoSQL, permitindo ao utilizador:
+
+1. Instalar e configurar rapidamente múltiplos SGBDs (MySQL, PostgreSQL, MongoDB, OracleDB, Microsoft SQL Server e Redis) usando Docker;
+2. Experimentar e praticar SQL em Jupyter Notebooks com bibliotecas como o JupySQL;
+3. Executar ambientes pré-configurados em máquinas virtuais para quem preferir não usar Docker;
+4. Utilizar ferramentas web e clientes gráficos para administração de bases de dados sem configurações complexas.
+
+Trata-se, portanto, de um laboratório portátil de bases de dados, ideal para aprendizagem, experimentação, ensino e desenvolvimento.
+
+Em resumo, destina-se a programadores, estudantes e docentes que necessitem de um laboratório completo de bases de dados, permitindo instalar e testar rapidamente vários SGBDs em ambientes isolados. É didático, modular e orientado para aprendizagem prática.
+
+
+* 🐳 [Docker](#-preparação-do-sistema-para-correr-em-docker)
+* 📓 [Jupyter Notebook](#-preparação-do-sistema-para-correr-em-jupyter-notebook)
+* 🖥️ [Máquina Virtual](#-preparação-do-sistema-para-correr-em-máquina-virtual)
+* 🧰 [Outras ferramentas](#-ferramentas-para-ligação-a-bases-de-dados)
+
+
+---
+---
+
+
+# 🐳 Preparação do sistema para correr em Docker
+
+Os ficheiros *docker-compose* incluídos neste repositório fornecem vários cenários de bases de dados e as respetivas ferramentas de administração para ligação a esses serviços:
+
+| Ficheiro                         | Servidores                        | Ferramentas Web                  |
+|----------------------------------|-----------------------------------|----------------------------------|
+| **docker-compose-mysql.yml**     | MySQL                             | Adminer, phpMyAdmin, CloudBeaver |
+| **docker-compose-postgres.yml**  | PostgreSQL                        | Adminer, pgAdmin, CloudBeaver    |
+| **docker-compose-mongo.yml**     | MongoDB                           | Mongo Express                    |
+| **docker-compose-oracle.yml**    | OracleDB CE (Community Edition)   | Adminer_ci8, CloudBeaver         |
+| **docker-compose-sqlserver.yml** | Microsoft SQL Server (Express)    | Adminer, CloudBeaver             |
+| **docker-compose-redis.yml**     | Redis                             | DbGate                           |
+| **docker-compose-ALL.yml**       | Todos os anteriores                | Todas as anteriores              |
+
+
+## Servidores incluídos
+
+* 🐬 **[MySQL](https://www.mysql.com/)** — SGBD relacional (RDBMS)
+* 🐘 **[PostgreSQL](https://www.postgresql.org/)** — SGBD relacional avançado (ORDBMS)
+* 🍃 **[MongoDB](https://www.mongodb.com/)** — Base de dados NoSQL orientada a documentos
+* 🔶 **[OracleDB CE](https://www.oracle.com/pt/database/technologies/appdev/xe.html)** — SGBD relacional empresarial, versão *Community Edition* para testes e desenvolvimento
+* 🟦 **[Microsoft SQL Server Express](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)** — SGBD relacional da Microsoft, versão gratuita *Express* para desenvolvimento e aplicações pequenas
+* 🟥 **[Redis](https://redis.io/)** — Base de dados em memória NoSQL, usada para cache, filas e armazenamento chave-valor
+
+
+## Ferramentas de administração web
+
+* 🛠️ **[Adminer](https://www.adminer.org/)** — Interface leve, num único ficheiro, compatível com vários SGBDs
+* ☁️ **[CloudBeaver](https://github.com/dbeaver/cloudbeaver)** — Interface web universal do DBeaver, compatível com muitos SGBDs
+* 🐘 **[pgAdmin](https://www.pgadmin.org/)** — Ferramenta oficial de administração PostgreSQL
+* 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
+* 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
+* 🟧 **[DbGate](https://dbgate.io/)** — Interface web para administração de bases de dados SQL e NoSQL (ex.: Redis, MongoDB)
+* 🔴 **[RedisInsight](https://redis.com/redis-enterprise/redis-insight/)** — Ferramenta gráfica para administração e visualização de Redis
+
+---
+---
+
+## 🛠️ Passos de instalação
+
+### 0. Pré-requisitos
+
+Assegure-se de que tem o **Git**, **WSL** e o **Docker Desktop** instalados:
+
+- 🐳 [Git](https://git-scm.com/downloads)
+- 🐧 [WSL (Windows Subsystem for Linux)](https://learn.microsoft.com/en-us/windows/wsl/install)
+- 🐙 [Docker Desktop](https://www.docker.com/get-started/)
+
+
+**Windows:**
+Alternativamente, no Windows pode instalar usando **winget**:
+
+```bash
+wsl --install
+wsl --update
+winget update
+winget install -e --id Git.Git
+winget install -e --id Docker.DockerDesktop
+```
+
+**macOS:**
+Alternativamente, no macOS pode instalar usando **Homebrew**:
+
+```bash
+# Instalar Homebrew (se ainda não estiver instalado)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Instalar Git e Docker Desktop
+brew install git
+brew install --cask docker
+```
+
+**Linux (Ubuntu/Debian):**
+Para distribuições baseadas em Debian, use **apt**:
+
+```bash
+# Atualizar repositórios
+sudo apt update
+
+# Instalar Git
+sudo apt install git
+
+# Instalar Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER
+
+# Reinicie a sessão ou execute:
+newgrp docker
+```
+
+
+### 1. Clonar este repositório
+```bash
+git clone https://github.com/jpedrodias/SQLab.git
+cd SQLab
+```
+> Ou, alternativamente, copie apenas os ficheiros `docker-compose-*.yml` desejados e o ficheiro `.env` de configuração.
+
+
+### 2. Iniciar os serviços Docker
+```bash
+docker compose up
+```
+> Para manter os serviços em execução mantenha o terminal aberto. Para parar, pressione `Ctrl+C`.
+
+Para iniciar os serviços em segundo plano (detached):
+```bash
+docker compose up -d
+```
+> Para parar os serviços em background: `docker compose down` ou parar via Docker Desktop.
+
+
+#### Extra - Servidor 1: MySQL
+- Para executar a versão com o servidor MySQL:
+```bash
+docker compose -f docker-compose-mysql.yml up
+```
+
+
+#### Extra - Servidor 2: PostgreSQL
+- Para executar a versão com o servidor PostgreSQL:
+```bash
+docker compose -f docker-compose-postgres.yml up
+```
+
+#### Extra - Servidor 3: MongoDB
+- Para executar a versão com o servidor MongoDB:
+```bash
+docker compose -f docker-compose-mongo.yml up
+```
+
+#### Extra - Servidor 4: Oracle Database Express Edition
+- Para executar a versão com o servidor Oracle:
+```bash
+docker compose -f docker-compose-oracle.yml up
+```
+
+
+#### Extra - Servidor 5: Microsoft SQL Server - Express
+- Para executar a versão com o Microsoft SQL Server:
+```bash
+docker compose -f docker-compose-sqlserver.yml up
+```
+
+
+#### Extra - CloudBeaver (Interface universal)
+- Para executar apenas o CloudBeaver (compatível com vários SGBDs):
+```bash
+docker compose -f docker-compose-cloudbeaver.yml up
+```
+> O CloudBeaver é a versão web do DBeaver e suporta conexões a MySQL, PostgreSQL, MongoDB, Oracle, SQL Server e outros.
+
+
+#### Extra - Todos os servidores
+- Para executar todos os servidores e ferramentas:
+```bash
+docker compose -f docker-compose-ALL.yml up
+```
+![Footprint of all servers](img/footprint.png)
+
+
+#### Menu para iniciar serviços
+
+**Windows:**
+- Em alternativa, pode iniciar serviços executando o ficheiro batch:
+```batch
+.\run_in_docker.bat
+```
+
+**Linux/macOS:**
+- Para Linux e macOS, utilize o script `bash`:
+```bash
+chmod +x run_in_docker.sh
+./run_in_docker.sh
+```
+(`chmod` adiciona permissão de execução ao ficheiro)
+
+
+**Extra:**
+- Ou, se preferir executar um serviço específico diretamente:
+```bash
+./run_in_docker.sh mysql      # Para MySQL
+./run_in_docker.sh postgres   # Para PostgreSQL
+./run_in_docker.sh mongo      # Para MongoDB
+./run_in_docker.sh ALL        # Para todos os serviços
+```
+> ![Menu run_in_docker.bat](img/print_run_in_docker.png)
+
+
+**Avançado:**
+É possível abrir uma shell dentro do serviço em execução.
+No Docker Desktop selecione o serviço em execução e escolha o separador "Exec".
+
+Isto é equivalente a:
+```bash
+docker exec -it mysql_server    /bin/bash
+docker exec -it postgres_server /bin/bash
+docker exec -it mongodb_server  /bin/bash
+docker exec -it oracle_server   /bin/bash
+docker exec -it mssql_server    /bin/bash
+docker exec -it redis_server    /bin/bash
+```
+
+
+### 3. Credenciais de acesso
+Para aceder a um servidor usando uma das ferramentas incluídas, o servidor **não** pode ser `localhost` e deverá usar o nome do serviço indicado. Contudo, ao conectar com ferramentas locais (ex.: DBeaver) o `Server host` é tipicamente `localhost`.
+
+
+3.1. ao servidor 1 - `MySQL`
+```yml
+Server: mysql or localhost
+user: mysql_user
+password: mysql_password
+database: mydatabase
+```
+PS: No DBeaver poderá ser necessário ajustar `Driver properties` e alterar `allowPublickeyRetrieval` de `false` para **`TRUE`**.
+
+
+3.2. ao servidor 2 - `PostgreSQL`
+```yml
+Server: postgres or localhost
+user: postgres_user
+password: postgres_password
+database: mydatabase
+```
+
+3.3. ao servidor 3 - `MongoDB`
+```yml
+Server: mongo or localhost
+user: mongo_user
+password: mongo_password
+database: mydatabase
+```
+
+3.4. ao servidor 4 - `Oracle Database Express Edition`
+```yml
+Server: oracle or localhost
+user: system
+password: oracle_password
+database: mydatabase
+```
+
+3.5. ao servidor 5 - `Microsoft SQL Server - Express`
+```yml
+Server: sqlserver or localhost
+user: sa
+password: mssql_Sup3rStrong3Password!
+database: tempdb (or leave empty)
+```
+
+3.6. ao servidor 6 - `Redis`
+```yml
+Server: redis or localhost
+```
+
+
+
+### 4. Clientes Web (sem instalação adicional)
+As ferramentas abaixo permitem aceder ao(s) servidor(es) sem instalação adicional. Nem todas as ferramentas suportam todos os SGBDs.
+
+| Tool         | Port | MySQL | Postgres | Oracle | MS SQL | MongoDB | Redis | Access |
+|--------------|------|-------|----------|--------|--------|---------|-------|--------|
+| Adminer      | [8081](http://localhost:8081) | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | none |
+| CloudBeaver  | [8082](http://localhost:8082) | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | initial setup required |
+| pgAdmin      | [8083](http://localhost:8083) | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | user: `admin@admin.com`, pass: `admin` |
+| Mongo Express| [8084](http://localhost:8084) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | user: `admin`, pass: `admin` |
+| Adminer_ci8  | [8085](http://localhost:8085) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | none |
+| phpMyAdmin   | [8086](http://localhost:8086) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | none |
+| DbGate       | [8087](http://localhost:8087) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | none |
+
+
+
+### 5. 🧹 Limpeza completa do cache do Docker
+
+Embora o Docker não tenha a mesma pegada que uma máquina virtual tradicional, continua a consumir espaço em disco (imagens, volumes, redes, etc.). Para gestão mais detalhada pode instalar a extensão [Portainer](https://www.portainer.io/) no Docker Desktop.
+
+Alternativamente, pode executar uma limpeza completa do cache com:
+
+```bash
+docker compose down
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker rmi $(docker images -q) -f
+docker volume rm $(docker volume ls -q)
+docker network prune -f
+docker builder prune --all -f
+docker system prune -a --volumes -f
+```
+
+> ℹ️ **Nota:** Os volumes Docker armazenam dados persistentes (ex.: bases de dados).
+> ⚠️ **Aviso:** Use estes comandos com cautela — podem eliminar dados irrecuperáveis.
+
+---
+---
+
+
+# 🖥️ Preparação do sistema para correr numa Máquina Virtual
+- [Oracle Database Free VirtualBox Appliance](https://www.oracle.com/database/technologies/databaseappdev-vm.html) (da Oracle)
+    - user: oracle ou system, password: oracle
+    - atualizar:
+    ```bash
+    sudo dnf check-updates
+    sudo dnf clean all
+    ```
+- ["Mint" Virtual Machine com MySQL e Postgres](https://drive.google.com/file/d/15cBQOABUNHihoPV5I7NGLIcFw-IkJ3k7/view)
+    - user: osboxes.org, password: osboxes.org
+    - atualizar/forçar atualização:
+    ```bash
+    sudo apt update -y && sudo apt upgrade -y && sudo apt full-upgrade -y && sudo apt dist-upgrade -y
+    sudo apt autoclean -y && sudo apt autoremove -y
+    ```
+    - resolver falhas de atualização:
+    ```bash
+    sudo apt -f install
+    ```
+
+
+---
+---
+
+# 🧰 Ferramentas para ligação a bases de dados
+## a) Aplicações:
+* [DBeaver](https://dbeaver.io/download/) - conectar a várias bases de dados (sqlite, mysql, postgres, mongodb, oracle, etc.)
+* [sqlite3](https://www.sqlite.org/download.html) - ferramenta de linha de comandos para SQLite
+* [DB Browser for SQLite](https://sqlitebrowser.org/) - ferramenta gráfica para SQLite
+* [pgAdmin](https://www.pgadmin.org/download/) - conectar a bases de dados PostgreSQL
+* [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) - conectar a MySQL/MariaDB
+* [SqlDbx](https://www.sqldbx.com/index.htm) - conectar a diferentes bases de dados
+* [MongoDB Compass](https://www.mongodb.com/try/download/compass) - conectar a MongoDB
+* [DbGate](https://dbgate.io/) - conectar a bases de dados SQL & NoSQL
+* [RedisInsight](https://redis.com/redis-enterprise/redis-insight/) - ferramenta gráfica para Redis
+
+
+## b) Ferramentas Web:
+* 🛠️ **[Adminer](https://www.adminer.org/en/)** — Interface leve, num único ficheiro, compatível com múltiplos SGBDs
+* ☁️ **[CloudBeaver](https://cloudbeaver.io/)** — Interface web universal do DBeaver
+* 🐘 **[pgAdmin](https://www.pgadmin.org/download/pgadmin-4-container/)** — Ferramenta oficial PostgreSQL
+* 🍃 **[Mongo Express](https://github.com/mongo-express/mongo-express)** — Interface leve para MongoDB
+* 🐬 **[phpMyAdmin](https://www.phpmyadmin.net/)** — Interface clássica para MySQL/MariaDB
+* 🟧 **[DbGate](https://dbgate.io/)** — Interface web para administração de bases de dados SQL e NoSQL
+
+
+## c) Outras ferramentas web:
+* [draw.io](https://draw.io) - desenhar ERD (Entity-Relationship Diagrams)
+* [mockaroo](https://mockaroo.com/) - gerar dados de teste aleatórios
+* [SandboxSQL](https://sandboxsql.com/) - ambiente online para praticar SQL com bases de dados reais
+* [dbdiagram.io](https://dbdiagram.io) - desenhar ERD
+* [SQLiteOnline](https://sqliteonline.com/) - editor online para testar SQL em SQLite, PostgreSQL, MySQL, e outros
+* [Programiz Online SQL Editor](https://www.programiz.com/sql/online-compiler) - editor online para testar SQL
+
+
+---
+---
+
+end of file: (EN) SQL Lab in Docker, Jupyter, or VM
+# (PT) Laboratório de SQL em Docker, Jupyter ou VM
+O objetivo principal deste repositório é fornecer um ambiente de testes e aprendizagem para bases de dados relacionais e NoSQL, permitindo ao utilizador:
 1. Instalar e configurar rapidamente múltiplos SGBDs (MySQL, PostgreSQL, MongoDB, OracleDB e Microsoft SQL Server) através de Docker;
 1. Experimentar e praticar SQL em Jupyter Notebooks usando bibliotecas como o JupySQL;
 1. Executar ambientes pré-configurados em Máquinas Virtuais para quem preferir não usar Docker;
@@ -349,7 +728,7 @@ docker system prune -a --volumes -f
 `JupySQL` allows you to run SQL commands and create charts from large datasets in Jupyter using the %sql, %%sql, and %sqlplot magics. JupySQL is compatible with all major databases (e.g., PostgreSQL, MySQL, SQL Server), data warehouses (like Snowflake, BigQuery, Redshift), and embedded engines (SQLite and DuckDB).
 
 [see JupySQL Documentation](https://jupysql.readthedocs.io/en/latest/quick-start.html)
-
+[see JupySQL Examples](examples/)
 
 To install and run Jupyter, consider the instruction in "Run Jupyter locally".
 
