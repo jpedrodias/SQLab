@@ -346,7 +346,7 @@ Add this to a empty cell in your .ipynb
 **BATABASE: MySQL**
 Install this python extentions using `pip`
 ```bash
-pip install ipykernel jupyterlab jupysql pymysql --upgrade --no-cache-dir
+pip install ipykernel jupyterlab jupysql pymysql cryptography --upgrade --no-cache-dir
 ```
 
 Add this to a empty cell in your .ipynb
