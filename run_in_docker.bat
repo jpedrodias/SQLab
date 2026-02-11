@@ -25,10 +25,10 @@ echo ║ [ E ] - Adminer_ci8                            ║
 echo ║ [ F ] - phpMyAdmin                             ║
 echo ║ [ G ] - DbGate                                 ║
 echo ╠════════════════════════════════════════════════╣
-echo ║ [ * ] - ALL Iniciar todos os servidores        ║
-echo ║ [ x ] - STOP Parar todos os servidores         ║
-echo ║ [ ! ] - PURGE Apagar tudo (vol., imagens, nw)  ║
-echo ║ [ 0 ] - EXIT Sair                              ║
+echo ║ [ * ] - ALL Start all servers                  ║
+echo ║ [ x ] - STOP Stop all servers                  ║
+echo ║ [ ! ] - PURGE Delete all (volumes, images, nw) ║
+echo ║ [ 0 ] - EXIT Exit                              ║
 echo ╚════════════════════════════════════════════════╝
 set /p op=Opção: 
 
