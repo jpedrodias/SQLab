@@ -1,5 +1,5 @@
 
-# (EN) SQL Lab in Docker, Jupyter, or VM
+# (EN) SQL Lab in Docker, Jupyter or VM
 The main goal of this repository is to provide a testing and learning environment for relational and NoSQL databases, enabling users to:
 1. Quickly install and configure multiple DBMSs (MySQL, PostgreSQL, MongoDB, OracleDB, Microsoft SQL Server, and Redis) using Docker;
 1. Experiment and practice SQL in Jupyter Notebooks using libraries like JupySQL;
@@ -191,10 +191,10 @@ docker compose up -d
 **Linux/macOS:**
 - For Linux and macOS, use the equivalent `bash` script:
 >    ```bash
->    chmod +x run_in_docker.sh
+>    chmod +x ./run_in_docker.sh
 >    ./run_in_docker.sh
 >    ```
-(`chmod` adds permissions to execute the file)
+(`chmod +x` adds permissions to execute the file)
 
 
 **Extra:**
