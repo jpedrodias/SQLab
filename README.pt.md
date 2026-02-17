@@ -587,10 +587,10 @@ docker compose up -d
 **Linux/macOS:**
 - Para Linux e macOS, utilize o script `bash` equivalente:
 >    ```bash
->    chmod +x run_in_docker.sh
+>    chmod +x ./run_in_docker.sh
 >    ./run_in_docker.sh
 >    ```
-(`chmod` adicina as permissões para esse ficheiro poder ser executado)
+(`chmod +x` adicina as permissões para esse ficheiro poder ser executado)
 
 
 **Extra:**
