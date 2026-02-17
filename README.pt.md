@@ -873,6 +873,8 @@ pip cache purge
 * [SQLiteOnline](https://sqliteonline.com/) - Editor online para testar SQL em SQLite, PostgreSQL, MySQL e outros
 * [Programiz Online SQL Editor](https://www.programiz.com/sql/online-compiler) - Editor online para testar SQL
 
+
+
 ---
 ---
 

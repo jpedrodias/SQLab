@@ -463,4 +463,14 @@ pip cache purge
 
 ---
 ---
+
+
+# Learning SQL
+* [Cheatsheets](https://github.com/FavioVazquez/ds-cheatsheets)
+* [W3Schools / SQL](https://www.w3schools.com/sql/) - SQL Tutorial
+* [SQL Murder Mystery](https://mystery.knightlab.com/)
+
+
+---
+---
 end of file: (EN) SQL Lab in Docker, Jupyter, or VM
