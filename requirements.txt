@@ -3,3 +3,5 @@ jupyterlab
 jupysql
 pymysql
 psycopg2-binary
+flask
+flask-sqlalchemy
