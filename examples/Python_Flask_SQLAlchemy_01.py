@@ -7,13 +7,18 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mysql_user:mysql_passwo
 
 db = SQLAlchemy(app)
 
-PAGE_TEMPLATE = '''
-<!DOCTYPE html> 
+
+# T E M P L A T E S =====================================================================================
+# This is a simple HTML template for displaying the data in a table format.
+# The correct way should be to place a template file in the 'templates' directory and use render_template('template.html', ...) instead of render_template_string.
+
+PAGE_TEMPLATE_INDEX = """
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">  
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee List</title>
+    <title>Show Tables</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         table { width: 100%; border-collapse: collapse; }
@@ -23,35 +28,64 @@ PAGE_TEMPLATE = '''
     </style>
 </head>
 <body>
-    <h1>Employee List</h1>
+    <h1>Show Tables</h1>
     <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Salary</th>
-            <th>Hire Date</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Address</th>
-        </tr>
-        {% for employee in employees %}
-        <tr>
-            <td>{{ employee.id }}</td>
-            <td>{{ employee.name }}</td>
-            <td>{{ employee.position }}</td>
-            <td>{{ employee.salary }}</td>  
-            <td>{{ employee.hire_date }}</td>
-            <td>{{ employee.email }}</td>
-            <td>{{ employee.phone }}</td>
-            <td>{{ employee.address }}</td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr><th>Table Name</th> </tr>
+        </thead>
+        <tbody>
+            {% for model_name in models %}
+                <tr><td><a href="/show/{{ model_name }}">{{ model_name }}</a></td></tr>
+            {% endfor %}
+        </tbody>
     </table>
+</body> 
+</html>
+"""
+
+PAGE_TEMPLATE_SHOWTABLE = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    tr:hover { background-color: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+
+  <table>
+    <thead>
+      <tr>
+        {% for col in columns %}
+          <th>{{ col_labels.get(col, col) }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for row in rows %}
+        <tr>
+          {% for col in columns %}
+            <td>{{ row.get(col, "") }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </body>
 </html>
-'''
+"""
 
+
+# M O D E L S ===========================================================================================
 class Employe(db.Model):
     __tablename__ = 'employees'
     
@@ -65,14 +99,47 @@ class Employe(db.Model):
     phone = db.Column(db.String(20), unique=True, nullable=False)
     address = db.Column(db.String(200), nullable=False)
     
-
     def __repr__(self):
         return f'<Employe {self.name}>'
 
+
+# T O O L S =============================================================================================
+MODELS = {
+    'Employe': Employe,    
+}
+
+
+def model_to_table(model, query, title=None, labels=None):
+    columns = [c.key for c in model.__table__.columns]  # ordem do modelo
+    rows = [
+        {col: getattr(obj, col) for col in columns}
+        for obj in query
+    ]
+    col_labels = labels or {c: c.replace("_", " ").title() for c in columns}
+    return {
+        "title": title or model.__tablename__,
+        "columns": columns,
+        "rows": rows,
+        "col_labels": col_labels,
+    }
+
+
+# R O U T E S ===========================================================================================
 @app.route('/')
 def index():
-    employees = Employe.query.all()
-    return render_template_string(PAGE_TEMPLATE, employees=employees)
+    return render_template_string(PAGE_TEMPLATE_INDEX, models=MODELS.keys())
+
+
+@app.route('/show/<model_name>')
+def show_table(model_name):
+    model = MODELS.get(model_name)
+    if not model:
+        return f'Model {model_name} not found', 404
+    
+    query = model.query.all()
+    table_data = model_to_table(model, query)
+    return render_template_string(PAGE_TEMPLATE_SHOWTABLE, **table_data)
+
 
 if __name__ == '__main__':
     with app.app_context():
