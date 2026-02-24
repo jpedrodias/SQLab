@@ -1,4 +1,7 @@
 # pip install -r ./requirements.txt
+from datetime import date
+from decimal import Decimal
+
 from flask import Flask, render_template, render_template_string
 from flask_sqlalchemy import SQLAlchemy
 
@@ -86,22 +89,37 @@ PAGE_TEMPLATE_SHOWTABLE = """
 
 
 # M O D E L S ===========================================================================================
+class Major(db.Model):
+    __tablename__ = "majors"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
+
+    # relationship to students
+    students = db.relationship("Student", backref="major")
+    
+    def __repr__(self):
+        return f"<Major {self.id} {self.name!r}>"
+       
+
 class Student(db.Model):
     __tablename__ = 'students'
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
-    major = db.Column(db.String(50), nullable=False)
-    gpa = db.Column(db.Float, nullable=False)
+    gpa = db.Column(db.Numeric(4, 2), nullable=False)  # MySQL DECIMAL(4,2)
     birthdate = db.Column(db.Date, nullable=False)
     
+    major_id = db.Column(db.Integer, db.ForeignKey("majors.id"), nullable=True)
+    
     def __repr__(self):
-        return f'<Student {self.name}>'
+        return f"<Student {self.id} {self.name!r}>"
 
 
 # T O O L S =============================================================================================
 MODELS = {
     'Student': Student,    
+    'Major': Major,
 }
 
 
@@ -112,6 +130,7 @@ def model_to_table(model, query, title=None, labels=None):
         for obj in query
     ]
     col_labels = labels or {c: c.replace("_", " ").title() for c in columns}
+    col_labels = labels or {c: c for c in columns}
     return {
         "title": title or model.__tablename__,
         "columns": columns,
@@ -143,25 +162,48 @@ if __name__ == '__main__':
         db.drop_all()    # DANGER: Drop existing tables for a clean slate (optional)
         db.create_all()  # Create tables if they don't exist
         
-        # Add a sample student if the table is empty
-        if Student.query.count() == 0:    
-        
+        # Add a sample Majors if the table is empty
+        if Major.query.count() == 0:    
+            
             sample_data = [
-                {'name': 'Ana Silva', 'major': 'Computer Science', 'gpa': 17.5, 'birthdate': '2007-03-14'},
-                {'name': 'Bruno Costa', 'major': 'Mathematics', 'gpa': 14.2, 'birthdate': '2006-11-02'},
-                {'name': 'Carla Mendes', 'major': 'Biology', 'gpa': 16.1, 'birthdate': '2007-07-29'},
-                {'name': 'Daniel Rocha', 'major': 'Engineering', 'gpa': 13.8, 'birthdate': '2006-01-18'},
-                {'name': 'Eva Santos', 'major': 'Mathematics', 'gpa': 18.3, 'birthdate': '2007-09-05'},
-                {'name': 'Filipe Almeida', 'major': 'Mathematics', 'gpa': 12.6, 'birthdate': '2006-05-21'},
-                {'name': 'Guilherme Ferreira', 'major': 'Mathematics', 'gpa': 15.7, 'birthdate': '2007-12-10'},
-                {'name': 'Helena Sousa', 'major': 'Physics', 'gpa': 16.9, 'birthdate': '2006-08-03'},
-                {'name': 'Inês Pereira', 'major': 'Biology', 'gpa': 13.1, 'birthdate': '2007-02-27'},
-                {'name': 'João Martins', 'major': 'Chemistry', 'gpa': 14.9, 'birthdate': '2006-04-16'},
+                {'name': 'Computer Science'},
+                {'name': 'Economics'},
+                {'name': 'Biology'},
+                {'name': 'Engineering'},
+                {'name': 'Mathematics'},
+                {'name': 'Physics'},
+                {'name': 'Chemistry'},
             ]
             
             for data in sample_data:
-                print('Adding student:', data.get('name'))
-                student = Student(**data)
+                print('Adding major:', data.get('name'))
+                major = Major(**data)
+                db.session.add(major)
+            db.session.commit()
+        #end if no majors
+        
+        # Add a sample Student if the table is empty
+        if Student.query.count() == 0:
+            sample_data = [
+                {"name": "Ana Silva", "gpa": 17.50, "birthdate": "2007-03-14", "major": "Computer Science"},
+                {"name": "Bruno Costa", "gpa": 14.20, "birthdate": "2006-11-02", "major": "Economics"},
+                {"name": "Carla Mendes", "gpa": 16.10, "birthdate": "2007-07-29", "major": "Biology"},
+                {"name": "Daniel Rocha", "gpa": 13.80, "birthdate": "2006-01-18", "major": "Engineering"},
+                {"name": "Eva Santos", "gpa": 18.30, "birthdate": "2007-09-05", "major": "Mathematics"},
+                {"name": "Filipe Almeida", "gpa": 12.60, "birthdate": "2006-05-21", "major": "Mathematics"},
+                {"name": "Guilherme Ferreira", "gpa": 15.70, "birthdate": "2007-12-10", "major": "Mathematics"},
+                {"name": "Helena Sousa", "gpa": 16.90, "birthdate": "2006-08-03", "major": "Physics"},
+                {"name": "Inês Pereira", "gpa": 13.10, "birthdate": "2007-02-27", "major": "Biology"},
+                {"name": "João Martins", "gpa": 14.90, "birthdate": "2006-04-16", "major": "Chemistry"},
+            ]
+            for data in sample_data:
+                print('Adding student:', data.get('name')) 
+                major_name = data.pop("major")
+                major = Major.query.filter_by(name=major_name).first()
+                if not major:
+                    print(f"Major '{major_name}' not found for student '{data.get('name')}'")
+                    continue
+                student = Student(**data, major=major)
                 db.session.add(student)
             db.session.commit()
         #end if no students
