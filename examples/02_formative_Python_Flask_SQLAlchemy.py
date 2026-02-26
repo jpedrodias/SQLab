@@ -95,7 +95,7 @@ class Major(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
 
-    # relationship to students
+    # relationship to students (One-to-Many: One Major has many Students)
     students = db.relationship("Student", backref="major")
     
     def __repr__(self):
@@ -112,6 +112,10 @@ class Student(db.Model):
     
     major_id = db.Column(db.Integer, db.ForeignKey("majors.id"), nullable=True)
     
+    __table_args__ = (
+        db.CheckConstraint("gpa >= 0.00 AND gpa <= 20.00", name="chk_gpa_range"),
+    )
+        
     def __repr__(self):
         return f"<Student {self.id} {self.name!r}>"
 
